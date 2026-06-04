@@ -208,9 +208,9 @@ export default function Home() {
                   <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
                 </svg>
               </div>
-              <h3 className="issue-title">Fundraising Boycott</h3>
+              <h3 className="issue-title">Fundraising Boycott & Reinvestment</h3>
               <p className="issue-desc">
-                I will not spend my time in office dialing for dollars or hosting exclusive lobbyist dinners. My service will be completely grassroots. I am there to represent you, not political action committees.
+                I will take zero money from this campaign, and zero lobbyist cash. 100% of campaign donations will go directly back into local grassroots community projects, charity initiatives, and community engagement.
               </p>
             </div>
 
@@ -341,7 +341,7 @@ export default function Home() {
           <div className="text-center">
             <h2 className="section-title">Support the Campaign</h2>
             <p className="section-subtitle">
-              Grassroots support keeps us independent. Every dollar helps us reach more Oregonians.
+              All campaign contributions will go directly back into the community. I will take zero money from this campaign, and every dollar donated will fund community projects, town halls, and local advocacy.
             </p>
           </div>
 
