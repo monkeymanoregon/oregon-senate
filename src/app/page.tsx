@@ -54,13 +54,13 @@ export default function Home() {
           </a>
           <nav>
             <ul className="navbar-links">
-              <li><a href="#about" className="navbar-link">About</a></li>
-              <li><a href="#issues" className="navbar-link">Issues</a></li>
+              <li><a href="#about" className="navbar-link">About the Platform</a></li>
+              <li><a href="#issues" className="navbar-link">How it Works</a></li>
               <li><a href="#volunteer" className="navbar-link">Volunteer</a></li>
               <li><a href="#donate" className="navbar-link">Donate</a></li>
               <li>
                 <a href="#donate" className="btn btn-nav-donate">
-                  Donate Now
+                  Support the Campaign
                 </a>
               </li>
             </ul>
@@ -77,17 +77,17 @@ export default function Home() {
                 <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
                 <line x1="4" y1="22" x2="4" y2="15"></line>
               </svg>
-              Oregon State Senate Candidate
+              A True Representative Democracy
             </span>
             <h1 className="hero-title">
-              A Strong Voice for <span>Oregon's Future</span>
+              The Candidate Whose <span>Opinion Doesn't Matter</span>
             </h1>
             <p className="hero-description">
-              As a dedicated community advocate and pragmatic problem solver, I am running for the Oregon State Senate to deliver real, sensible results. Together, we can foster local economic opportunity, elevate our public schools, and protect our communities.
+              I am running for the Oregon State Senate on a simple promise: I will vote based on what you actually want, not my own opinions. No special interests, no fundraising distractions—just pure representation of our community's majority.
             </p>
             <div className="hero-ctas">
               <a href="#volunteer" className="btn btn-primary">Join the Campaign</a>
-              <a href="#about" className="btn btn-outline">Read the Vision</a>
+              <a href="#about" className="btn btn-outline">Read the Promise</a>
             </div>
           </div>
           <div className="hero-image-wrapper">
@@ -111,19 +111,19 @@ export default function Home() {
         <div className="container stats-grid">
           <div className="stat-item">
             <div className="stat-number">100%</div>
-            <div className="stat-label">Oregon Focused</div>
+            <div className="stat-label">Constituent Guided</div>
           </div>
           <div className="stat-item">
-            <div className="stat-number">Grassroots</div>
-            <div className="stat-label">Funded & Driven</div>
+            <div className="stat-number">$0</div>
+            <div className="stat-label">Special Interest Cash</div>
           </div>
           <div className="stat-item">
-            <div className="stat-number">Pragmatic</div>
-            <div className="stat-label">Solutions First</div>
+            <div className="stat-number">Real-Time</div>
+            <div className="stat-label">Feedback Forums</div>
           </div>
           <div className="stat-item">
-            <div className="stat-number">Unified</div>
-            <div className="stat-label">Community Action</div>
+            <div className="stat-number">True</div>
+            <div className="stat-label">Direct Representation</div>
           </div>
         </div>
       </section>
@@ -144,18 +144,18 @@ export default function Home() {
             </div>
           </div>
           <div className="about-text">
-            <h2 className="section-title left-align">Meet Tysan</h2>
+            <h2 className="section-title left-align">The Promise of Representation</h2>
             <p style={{ marginTop: '1.5rem' }}>
-              Oregon has always been a state built on resilience, forward-thinking, and strong local communities. But today, many Oregonians feel their voices are drowned out by partisan division and political gridlock.
+              For too long, politicians have entered office to push their own agendas, follow party lines, or spend their time dialing for dollars. They vote based on backroom deals rather than the actual will of their constituents.
             </p>
             <p>
-              I am running for the Oregon State Senate to bridge that gap. With a professional background rooted in practical engineering, digital innovation, and business operations, I know how to look at complex systems, find the inefficiencies, and build real solutions that work for everyday people.
+              I believe a representative's job is to represent, not to dictate. That's why I'm running on a unique platform: my personal opinion doesn't matter. My votes in the Senate will be determined directly by the majority of the people I represent.
             </p>
             <div className="about-quote">
-              "We don't need ideological battles. We need practical leadership that focuses on measurable outcomes—improving our schools, helping small businesses grow, and keeping our neighborhoods safe."
+              "A politician's job shouldn't be about raising money or forcing a personal agenda. It should be about listening to the majority and casting votes accordingly. That is how a real democracy should work."
             </div>
             <p>
-              I believe in transparent governance, fiscal responsibility, and ensuring that our state policies directly reflect the needs and values of the communities we represent. I invite you to join me on this journey as we work to build a stronger, more prosperous Oregon.
+              We will utilize secure, modern online tools alongside classic, face-to-face town halls to ensure every voter has a direct say on upcoming bills. I won't make my time in office about fundraising or campaign posturing. I will spend it listening to you.
             </p>
           </div>
         </div>
@@ -165,9 +165,9 @@ export default function Home() {
       <section id="issues" className="issues section-padding">
         <div className="container">
           <div className="text-center">
-            <h2 className="section-title">Core Campaign Issues</h2>
+            <h2 className="section-title">How Direct Representation Works</h2>
             <p className="section-subtitle">
-              A comprehensive platform tailored to tackle Oregon's most pressing challenges.
+              A modern, citizen-first approach to state governance that returns power to the voter.
             </p>
           </div>
 
@@ -175,51 +175,54 @@ export default function Home() {
             <div className="issue-card">
               <div className="issue-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23"></line>
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
               </div>
-              <h3 className="issue-title">Economic Stability & Growth</h3>
+              <h3 className="issue-title">Constituent-Led Voting</h3>
               <p className="issue-desc">
-                Supporting local Oregon businesses and families by reducing regulatory bottlenecks, promoting workforce training programs, and creating a tax structure that rewards innovation and job creation.
+                My votes on the Senate floor are yours to command. For every major bill, I will survey the district to see exactly where the majority stands. That majority vote will dictate exactly how I vote on the Senate floor.
               </p>
             </div>
 
             <div className="issue-card">
               <div className="issue-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </div>
-              <h3 className="issue-title">Empowering Education</h3>
+              <h3 className="issue-title">Modern Digital Democracy</h3>
               <p className="issue-desc">
-                Ensuring our schools have the resources, curriculum, and technology needed to prepare pupils for the modern global economy. We will prioritize direct classroom funding and career-technical education.
+                We will build secure, transparent online feedback portals. You'll be able to view upcoming bills, read simple summaries, and vote in real-time on how you want our district represented.
               </p>
             </div>
 
             <div className="issue-card">
               <div className="issue-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
                 </svg>
               </div>
-              <h3 className="issue-title">Safe & Resilient Communities</h3>
+              <h3 className="issue-title">Fundraising Boycott</h3>
               <p className="issue-desc">
-                Investing in local infrastructure, improving emergency response capabilities, and supporting community policing initiatives that build trust, reduce crime, and keep our neighborhoods secure.
+                I will not spend my time in office dialing for dollars or hosting exclusive lobbyist dinners. My service will be completely grassroots. I am there to represent you, not political action committees.
               </p>
             </div>
 
             <div className="issue-card">
               <div className="issue-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
               </div>
-              <h3 className="issue-title">Accessible Healthcare</h3>
+              <h3 className="issue-title">In-Person Town Halls</h3>
               <p className="issue-desc">
-                Enhancing healthcare options in both rural and urban Oregon, expanding mental health support systems, and introducing measures to lower the out-of-pocket costs of life-saving prescriptions.
+                Digital polls are just one piece. I will regularly travel the district to host open, face-to-face town halls, listening to your stories and discussing local challenges directly with you.
               </p>
             </div>
           </div>
@@ -232,7 +235,7 @@ export default function Home() {
           <div className="text-center">
             <h2 className="section-title">Join the Movement</h2>
             <p className="section-subtitle">
-              Change starts in our own backyard. Sign up today to help us build a better Oregon.
+              Help us prove that a true representation model works. Sign up today to volunteer.
             </p>
           </div>
 
@@ -338,7 +341,7 @@ export default function Home() {
           <div className="text-center">
             <h2 className="section-title">Support the Campaign</h2>
             <p className="section-subtitle">
-              Your financial support keeps us competitive and helps us spread our message across the entire district.
+              Grassroots support keeps us independent. Every dollar helps us reach more Oregonians.
             </p>
           </div>
 
@@ -422,15 +425,15 @@ export default function Home() {
             <div className="footer-about">
               <h3>Tysan for Senate</h3>
               <p>
-                Pragmatic leadership focused on positive, measurable improvements in public safety, local economic opportunities, and public education. Let's make Oregon work for everyone.
+                Pragmatic, direct democracy leadership focused entirely on voting in accordance with the will of Oregon's district citizens.
               </p>
             </div>
             <div className="footer-links">
               <h4>Quick Links</h4>
               <ul className="footer-links-list">
                 <li><a href="#">Back to Top</a></li>
-                <li><a href="#about">Meet the Candidate</a></li>
-                <li><a href="#issues">Campaign Issues</a></li>
+                <li><a href="#about">Platform Promise</a></li>
+                <li><a href="#issues">How It Works</a></li>
               </ul>
             </div>
             <div className="footer-links">
@@ -451,4 +454,5 @@ export default function Home() {
     </>
   );
 }
+
 
