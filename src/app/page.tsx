@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import InteractiveFeedback from "@/components/InteractiveFeedback";
 
 export default function Home() {
   return (
@@ -106,6 +107,19 @@ export default function Home() {
           <Link href="/about" className="btn btn-outline" style={{ display: 'inline-flex', margin: '0 auto' }}>
             Read the Full Platform
           </Link>
+        </div>
+      </section>
+
+      {/* Interactive Feedback Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)' }}>
+        <div className="container text-center">
+          <h2 className="section-title">Tell Me What Matters To You</h2>
+          <p className="section-subtitle">
+            Your voice drives this campaign. Let me know what issues are important to you and what I should be paying attention to in our district.
+          </p>
+          <div style={{ marginTop: '2rem' }}>
+            <InteractiveFeedback />
+          </div>
         </div>
       </section>
 

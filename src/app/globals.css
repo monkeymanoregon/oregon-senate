@@ -816,3 +816,111 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Interactive Feedback Form */
+.feedback-card {
+  background-color: var(--bg-white);
+  padding: 3.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.feedback-success-card {
+  background-color: var(--bg-white);
+  padding: 4rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.feedback-success-card h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-success-card p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.feedback-section {
+  margin-bottom: 2.5rem;
+}
+
+.feedback-label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.topic-chip {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.topic-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.topic-chip.active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-white);
+}
+
+.feedback-input, .feedback-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: var(--transition-fast);
+  background-color: #f8fafc;
+}
+
+.feedback-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.feedback-input:focus, .feedback-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background-color: var(--bg-white);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+@media (max-width: 768px) {
+  .feedback-card {
+    padding: 2rem;
+  }
+}
+
+
