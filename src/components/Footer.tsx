@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <div className="disclaimer-box">
-            Paid for by the Committee to Elect Tysan
+            Paid for by me
           </div>
         </div>
         
