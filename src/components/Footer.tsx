@@ -23,6 +23,7 @@ export default function Footer() {
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About Tysan</Link></li>
               <li><Link href="/platform">Platform Promise</Link></li>
+              <li><Link href="/bills">Vote on Bills</Link></li>
               <li><Link href="/issues">How It Works</Link></li>
             </ul>
           </div>
