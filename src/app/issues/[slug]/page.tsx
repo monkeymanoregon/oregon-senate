@@ -10,8 +10,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function IssuePage({ params }: { params: { slug: string } }) {
-  const issue = issuesData.find((i) => i.id === params.slug);
+export default async function IssuePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const issue = issuesData.find((i) => i.id === slug);
 
   if (!issue) {
     notFound();
