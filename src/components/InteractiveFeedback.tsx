@@ -2,41 +2,59 @@
 
 import { useState } from "react";
 
-export default function InteractiveFeedback() {
-  const topics = [
-    "Housing & Cost of Living",
-    "Education",
-    "Infrastructure & Roads",
-    "Healthcare",
-    "Environment & Climate",
-    "Public Safety",
-    "Economy & Jobs"
-  ];
+// The categories and subcategories
+const issueCategories = {
+  "Economy & Jobs": ["Small Business Support", "Minimum Wage", "Tech Sector", "Rural Economy", "Tax Reform"],
+  "Education": ["K-12 Funding", "Higher Ed Affordability", "Teacher Pay", "Trade Schools", "Early Childhood Ed"],
+  "Healthcare": ["Access to Care", "Mental Health Services", "Prescription Costs", "Addiction Recovery"],
+  "Housing & Infrastructure": ["Affordable Housing", "Homelessness", "Road Repair", "Public Transit", "Zoning Reform"],
+  "Environment": ["Wildfire Prevention", "Water Quality", "Clean Energy", "Conservation", "Timber Industry"],
+  "Public Safety": ["Police Funding", "Criminal Justice Reform", "Emergency Services", "Gun Control Policy"],
+  "Civil Rights & Community": ["LGBTQ+ Rights", "Racial Equity", "Veterans Affairs", "Accessibility"]
+};
 
-  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
-  const [customTopic, setCustomTopic] = useState("");
-  const [whyMatters, setWhyMatters] = useState("");
-  const [whatToFocusOn, setWhatToFocusOn] = useState("");
+export default function InteractiveFeedback() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    customTopic: "",
+    whyMatters: "",
+    whatToFocusOn: ""
+  });
+
+  const [activeCategory, setActiveCategory] = useState<string>("");
+  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const toggleTopic = (topic: string) => {
-    if (selectedTopics.includes(topic)) {
-      setSelectedTopics(selectedTopics.filter(t => t !== topic));
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const toggleSubcategory = (sub: string) => {
+    if (selectedSubcategories.includes(sub)) {
+      setSelectedSubcategories(selectedSubcategories.filter(s => s !== sub));
     } else {
-      setSelectedTopics([...selectedTopics, topic]);
+      setSelectedSubcategories([...selectedSubcategories, sub]);
     }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
-    // Here we would normally send data to a backend
+    // Submit data to backend here
     setTimeout(() => {
       setIsSubmitted(false);
-      setSelectedTopics([]);
-      setCustomTopic("");
-      setWhyMatters("");
-      setWhatToFocusOn("");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        customTopic: "",
+        whyMatters: "",
+        whatToFocusOn: ""
+      });
+      setActiveCategory("");
+      setSelectedSubcategories([]);
     }, 6000);
   };
 
@@ -48,7 +66,7 @@ export default function InteractiveFeedback() {
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
         <h3>Your Voice Has Been Heard</h3>
-        <p>Thank you for participating in our direct democracy process. I review every submission personally to understand exactly what the district wants me to focus on.</p>
+        <p>Thank you for participating in our direct democracy process, {formData.firstName || 'friend'}. I review every submission personally to understand exactly what the district wants me to focus on.</p>
       </div>
     );
   }
@@ -56,57 +74,101 @@ export default function InteractiveFeedback() {
   return (
     <div className="feedback-card">
       <form onSubmit={handleSubmit}>
+        
+        {/* Step 1: Contact Info */}
         <div className="feedback-section">
-          <label className="feedback-label">1. Select the issues that matter most to you:</label>
-          <div className="topic-chips">
-            {topics.map(topic => (
-              <button
-                type="button"
-                key={topic}
-                onClick={() => toggleTopic(topic)}
-                className={`topic-chip ${selectedTopics.includes(topic) ? 'active' : ''}`}
-              >
-                {topic}
-              </button>
-            ))}
+          <label className="feedback-label">1. Your Contact Information</label>
+          <div className="form-grid">
+            <div className="form-group">
+              <label className="form-label" htmlFor="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required className="form-input" value={formData.firstName} onChange={handleInputChange} />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required className="form-input" value={formData.lastName} onChange={handleInputChange} />
+            </div>
+            <div className="form-group form-group-full">
+              <label className="form-label" htmlFor="email">Email Address</label>
+              <input type="email" id="email" name="email" required className="form-input" value={formData.email} onChange={handleInputChange} />
+            </div>
           </div>
-          <div style={{ marginTop: '1rem' }}>
+        </div>
+
+        {/* Step 2: Issue Selection */}
+        <div className="feedback-section">
+          <label className="feedback-label">2. Select the issue category:</label>
+          <select 
+            className="feedback-select" 
+            value={activeCategory} 
+            onChange={(e) => setActiveCategory(e.target.value)}
+          >
+            <option value="" disabled>-- Select a Category --</option>
+            {Object.keys(issueCategories).map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+          
+          {activeCategory && (
+            <div className="subcategory-container animate-fade-in-up" style={{ animationDuration: '0.4s' }}>
+              <span className="subcategory-label">Select specific areas of concern within {activeCategory}:</span>
+              <div className="topic-chips">
+                {issueCategories[activeCategory as keyof typeof issueCategories].map(sub => (
+                  <button
+                    type="button"
+                    key={sub}
+                    onClick={() => toggleSubcategory(sub)}
+                    className={`topic-chip ${selectedSubcategories.includes(sub) ? 'active' : ''}`}
+                  >
+                    {sub}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div style={{ marginTop: '1.5rem' }}>
+            <label className="form-label" style={{ marginBottom: '0.5rem', display: 'block' }}>Or enter a custom issue:</label>
             <input
               type="text"
-              placeholder="Other topic (please specify)"
+              name="customTopic"
+              placeholder="E.g., Local Toll Roads, Specific City Zoning..."
               className="feedback-input"
-              value={customTopic}
-              onChange={(e) => setCustomTopic(e.target.value)}
+              value={formData.customTopic}
+              onChange={handleInputChange}
             />
           </div>
         </div>
 
+        {/* Step 3: Context */}
         <div className="feedback-section">
-          <label className="feedback-label" htmlFor="whyMatters">2. Why are these issues important to you?</label>
+          <label className="feedback-label" htmlFor="whyMatters">3. Why are these issues important to you?</label>
           <textarea
             id="whyMatters"
+            name="whyMatters"
             required
             className="feedback-textarea"
             placeholder="Share your personal experience or thoughts..."
-            value={whyMatters}
-            onChange={(e) => setWhyMatters(e.target.value)}
+            value={formData.whyMatters}
+            onChange={handleInputChange}
           />
         </div>
 
+        {/* Step 4: Action */}
         <div className="feedback-section">
-          <label className="feedback-label" htmlFor="whatToFocusOn">3. What specifically should I pay attention to?</label>
+          <label className="feedback-label" htmlFor="whatToFocusOn">4. What specifically should I pay attention to?</label>
           <textarea
             id="whatToFocusOn"
+            name="whatToFocusOn"
             required
             className="feedback-textarea"
             placeholder="E.g., Focus on fixing potholes on Main St, or support affordable housing initiatives..."
-            value={whatToFocusOn}
-            onChange={(e) => setWhatToFocusOn(e.target.value)}
+            value={formData.whatToFocusOn}
+            onChange={handleInputChange}
           />
         </div>
 
         <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }}>
-          Send to Tysan
+          Send Your Feedback
         </button>
       </form>
     </div>
