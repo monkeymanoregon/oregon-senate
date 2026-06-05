@@ -20,7 +20,7 @@ export default function Home() {
               The Candidate Whose <span>Opinion Doesn't Matter</span>
             </h1>
             <p className="hero-description">
-              I am running for the Oregon State Senate on a simple promise: I will vote based on what you actually want, not my own opinions. No special interests, no fundraising distractions—just pure representation of our community's majority.
+              I am running for the Oregon State Senate on a simple promise: I will vote based on what you actually want, not my own opinions. No special interests, no fundraising distractions—just pure representation. I will vote exactly how you tell me to.
             </p>
             <div className="hero-ctas" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', maxWidth: '400px' }}>
               <Link href="/bills" className="btn btn-primary" style={{ width: '100%', fontSize: '1.1rem', padding: '1rem' }}>
@@ -118,9 +118,9 @@ export default function Home() {
       {/* Interactive Feedback Section */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)' }}>
         <div className="container text-center">
-          <h2 className="section-title">Tell Me What Matters To You</h2>
+          <h2 className="section-title">Let me know what you think</h2>
           <p className="section-subtitle">
-            Your voice drives this campaign. Let me know what issues are important to you and what I should be paying attention to in our district.
+            Your voice drives this campaign. Let me know what issues are important to you and what I should be paying attention to in the district.
           </p>
           <div style={{ marginTop: '2rem' }}>
             <InteractiveFeedback />

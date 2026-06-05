@@ -32,7 +32,7 @@ export default function About() {
               As a digital marketing, SEO, and AI specialist, I have the exact tools and expertise needed to build out this campaign rapidly. I am deploying this technology to amplify your voices at an unprecedented rate, ensuring the message that <em>you</em> want heard is exactly what reaches the Senate floor.
             </p>
             <p>
-              We will utilize secure, modern online tools alongside classic, face-to-face town halls to ensure every voter has a direct say on upcoming bills. I won't make my time in office about fundraising or campaign posturing. I will spend it listening to you.
+              I will utilize secure, modern online tools alongside classic, face-to-face town halls to ensure every voter has a direct say on upcoming bills. I won't make my time in office about fundraising or campaign posturing. I will spend it listening to you.
             </p>
           </div>
         </div>

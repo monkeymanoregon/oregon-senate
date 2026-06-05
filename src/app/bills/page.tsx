@@ -58,7 +58,7 @@ export default async function Bills() {
             <h2 className="section-title">Vote on Live Bills</h2>
             <p className="section-subtitle">
               This is direct democracy in action. Below are live, active bills currently sitting on the Oregon Senate floor. 
-              Click "Read Full Details" to educate yourself, then cast your vote. I will vote exactly in accordance with the district's majority consensus.
+              Click "Read Full Details" to educate yourself, then cast your vote. I will cast my vote exactly how the majority of you tell me to.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export default async function Bills() {
               Want to dive deeper into how this process works?
             </p>
             <Link href="/issues" className="btn btn-outline">
-              Learn How We Execute Your Will
+              See how I vote on your behalf
             </Link>
           </div>
         </div>

@@ -65,8 +65,8 @@ export default function InteractiveFeedback() {
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
-        <h3>Your Voice Has Been Heard</h3>
-        <p>Thank you for participating in our direct democracy process, {formData.firstName || 'friend'}. I review every submission personally to understand exactly what the district wants me to focus on.</p>
+        <h3>Thanks for reaching out!</h3>
+        <p>Your message has been sent straight to my personal inbox, {formData.firstName || 'friend'}. I read every single submission so I know exactly what you want me to focus on.</p>
       </div>
     );
   }
