@@ -14,6 +14,8 @@ export interface OregonMeasureFull {
   RevenueImpact: string | null;
   EffectiveDate: string | null;
   ModifiedDate: string | null;
+  FiscalDocumentUrl?: string | null;
+  RevenueDocumentUrl?: string | null;
 }
 
 export default function BillCard({ bill }: { bill: OregonMeasureFull }) {
@@ -71,12 +73,22 @@ export default function BillCard({ bill }: { bill: OregonMeasureFull }) {
                     <div className="impact-box">
                       <strong>Fiscal Impact</strong>
                       <p>{bill.FiscalImpact}</p>
+                      {bill.FiscalDocumentUrl && (
+                        <a href={bill.FiscalDocumentUrl} target="_blank" rel="noreferrer" className="btn-read-more" style={{fontSize: '0.85rem', marginTop: '0.5rem', display: 'inline-block'}}>
+                          View Official PDF
+                        </a>
+                      )}
                     </div>
                   )}
                   {bill.RevenueImpact && (
                     <div className="impact-box">
                       <strong>Revenue Impact</strong>
                       <p>{bill.RevenueImpact}</p>
+                      {bill.RevenueDocumentUrl && (
+                        <a href={bill.RevenueDocumentUrl} target="_blank" rel="noreferrer" className="btn-read-more" style={{fontSize: '0.85rem', marginTop: '0.5rem', display: 'inline-block'}}>
+                          View Official PDF
+                        </a>
+                      )}
                     </div>
                   )}
                 </div>
