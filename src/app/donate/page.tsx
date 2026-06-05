@@ -94,8 +94,16 @@ export default function Donate() {
                   >
                     <option value="General Community Fund">General Community Fund (Distributed where needed most)</option>
                     <option value="Feeding the Homeless">Feeding the Homeless</option>
+                    <option value="Affordable Housing Initiatives">Affordable Housing Initiatives</option>
                     <option value="Single Mothers Assistance">Single Mothers Assistance</option>
                     <option value="Children in Need">Children in Need</option>
+                    <option value="Public School Supplies & Programs">Public School Supplies & Programs</option>
+                    <option value="Addiction Recovery & Drug Rehab">Addiction Recovery & Drug Rehab</option>
+                    <option value="Mental Health Services">Mental Health Services</option>
+                    <option value="Domestic Violence Shelters">Domestic Violence Shelters</option>
+                    <option value="Veterans Support Services">Veterans Support Services</option>
+                    <option value="Environmental Conservation">Environmental Conservation</option>
+                    <option value="Small Business Grants">Small Business Grants</option>
                     <option value="Local Grassroots Projects">Local Grassroots Projects</option>
                   </select>
                 </div>
