@@ -6,6 +6,7 @@ export default function Donate() {
   const [activeAmount, setActiveAmount] = useState<number | string>(100);
   const [customAmount, setCustomAmount] = useState<string>("");
   const [donationSubmitted, setDonationSubmitted] = useState<boolean>(false);
+  const [selectedFund, setSelectedFund] = useState<string>("General Community Fund");
   const donationAmounts = [10, 25, 50, 100, 250, 500];
 
   const handleDonationSubmit = (e: React.FormEvent) => {
@@ -33,7 +34,7 @@ export default function Donate() {
                 </svg>
                 <h3 style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>Thank You for Your Support!</h3>
                 <p style={{ color: 'var(--text-muted)' }}>
-                  Your contribution of <strong>${customAmount || activeAmount}</strong> makes a massive difference. 
+                  Your contribution of <strong>${customAmount || activeAmount}</strong> to the <strong>{selectedFund}</strong> makes a massive difference. 
                   Together, we are fighting for Oregon's future.
                 </p>
               </div>
@@ -82,6 +83,22 @@ export default function Donate() {
                     />
                   </div>
                 )}
+
+                <div className="form-group" style={{ marginBottom: '2rem', textAlign: 'left' }}>
+                  <label className="form-label" style={{ marginBottom: '0.75rem', display: 'block', fontSize: '1rem' }}>Where should this donation go?</label>
+                  <select 
+                    className="feedback-select" 
+                    value={selectedFund}
+                    onChange={(e) => setSelectedFund(e.target.value)}
+                    required
+                  >
+                    <option value="General Community Fund">General Community Fund (Distributed where needed most)</option>
+                    <option value="Feeding the Homeless">Feeding the Homeless</option>
+                    <option value="Single Mothers Assistance">Single Mothers Assistance</option>
+                    <option value="Children in Need">Children in Need</option>
+                    <option value="Local Grassroots Projects">Local Grassroots Projects</option>
+                  </select>
+                </div>
 
                 <button type="submit" className="btn btn-primary btn-submit" style={{ backgroundColor: 'var(--accent)', animation: 'pulseBorder 2s infinite' }}>
                   Contribute ${customAmount || activeAmount}
