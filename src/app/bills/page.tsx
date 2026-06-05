@@ -1,27 +1,18 @@
-import BillVoter from "@/components/BillVoter";
+import BillCard, { OregonMeasureFull } from "@/components/BillCard";
 import Link from "next/link";
 
-interface OregonMeasure {
-  MeasurePrefix: string;
-  MeasureNumber: number;
-  CatchLine: string;
-  CurrentLocation: string;
-  RelatingTo: string;
-}
-
 async function getRecentBills() {
-  // We fetch the 6 most recent Senate Bills from the open Oregon Legislature OData API
   try {
     const res = await fetch(
       "https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=MeasurePrefix eq 'SB'&$orderby=CreatedDate desc&$top=6&$format=json",
-      { next: { revalidate: 3600 } } // Revalidate every hour
+      { next: { revalidate: 3600 } }
     );
     if (!res.ok) {
       console.error("Failed to fetch bills");
       return [];
     }
     const data = await res.json();
-    return data.value as OregonMeasure[];
+    return data.value as OregonMeasureFull[];
   } catch (error) {
     console.error("Error fetching bills:", error);
     return [];
@@ -39,7 +30,7 @@ export default async function Bills() {
             <h2 className="section-title">Vote on Live Bills</h2>
             <p className="section-subtitle">
               This is direct democracy in action. Below are live, active bills currently sitting on the Oregon Senate floor. 
-              Cast your vote, and I will vote exactly in accordance with the district's majority consensus.
+              Click "Read Full Details" to educate yourself, then cast your vote. I will vote exactly in accordance with the district's majority consensus.
             </p>
           </div>
 
@@ -51,23 +42,7 @@ export default async function Bills() {
             <div className="bills-grid">
               {bills.map((bill) => {
                 const billId = `${bill.MeasurePrefix}${bill.MeasureNumber}`;
-                return (
-                  <div key={billId} className="bill-card">
-                    <div className="bill-header">
-                      <h3>{bill.MeasurePrefix} {bill.MeasureNumber}</h3>
-                      <span className="bill-status">{bill.CurrentLocation}</span>
-                    </div>
-                    <div className="bill-content">
-                      <p className="bill-summary">{bill.CatchLine}</p>
-                      {bill.RelatingTo && (
-                        <p className="bill-relating"><strong>Relating to:</strong> {bill.RelatingTo}</p>
-                      )}
-                    </div>
-                    <div className="bill-footer">
-                      <BillVoter billId={billId} />
-                    </div>
-                  </div>
-                );
+                return <BillCard key={billId} bill={bill} />;
               })}
             </div>
           )}

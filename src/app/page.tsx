@@ -22,9 +22,14 @@ export default function Home() {
             <p className="hero-description">
               I am running for the Oregon State Senate on a simple promise: I will vote based on what you actually want, not my own opinions. No special interests, no fundraising distractions—just pure representation of our community's majority.
             </p>
-            <div className="hero-ctas">
-              <Link href="/volunteer" className="btn btn-primary">Join the Campaign</Link>
-              <Link href="/about" className="btn btn-outline">Read the Promise</Link>
+            <div className="hero-ctas" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', maxWidth: '400px' }}>
+              <Link href="/bills" className="btn btn-primary" style={{ width: '100%', fontSize: '1.1rem', padding: '1rem' }}>
+                Vote on Live Senate Bills
+              </Link>
+              <div style={{ display: 'flex', gap: '1rem', width: '100%' }}>
+                <Link href="/about" className="btn btn-outline" style={{ flex: 1, padding: '0.75rem', textAlign: 'center' }}>Read the Promise</Link>
+                <Link href="/volunteer" className="btn btn-outline" style={{ flex: 1, padding: '0.75rem', textAlign: 'center' }}>Volunteer</Link>
+              </div>
             </div>
           </div>
           <div className="hero-image-wrapper">
