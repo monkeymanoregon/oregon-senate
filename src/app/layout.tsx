@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -31,7 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`} style={{ scrollBehavior: 'smooth' }}>
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
