@@ -9,7 +9,7 @@ export default function About() {
             <div className="hero-image-bg" style={{ transform: 'rotate(3deg)', background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%)' }}></div>
             <div className="hero-image-container" style={{ border: '4px solid var(--bg-white)' }}>
               <Image
-                src="/candidate_about.jpg"
+                src="/candidate_casual.jpg"
                 alt="Tysan Campaign Headshot"
                 width={400}
                 height={400}
