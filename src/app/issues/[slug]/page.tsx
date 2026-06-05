@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { issuesData } from "@/data/issues";
 import InteractiveFeedback from "@/components/InteractiveFeedback";
 import Link from "next/link";
+import LiveBills from "@/components/LiveBills";
+import PublicSentimentChart from "@/components/PublicSentimentChart";
 
 // Pre-generate static routes for all known issues during build
 export function generateStaticParams() {
@@ -84,6 +86,10 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
               </div>
             </div>
           )}
+
+          <PublicSentimentChart issueId={issue.id} />
+          
+          <LiveBills keywords={issue.searchKeywords} />
 
         </div>
       </section>

@@ -1,51 +1,7 @@
 import BillCard, { OregonMeasureFull } from "@/components/BillCard";
 import Link from "next/link";
 
-async function getRecentBills() {
-  try {
-    const res = await fetch(
-      "https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=MeasurePrefix eq 'SB'&$orderby=CreatedDate desc&$top=6&$format=json",
-      { next: { revalidate: 3600 } }
-    );
-    if (!res.ok) {
-      console.error("Failed to fetch bills");
-      return [];
-    }
-    const data = await res.json();
-    const bills: OregonMeasureFull[] = data.value;
-
-    const enhancedBills = await Promise.all(bills.map(async (bill) => {
-      let fiscalUrl = null;
-      let revenueUrl = null;
-      try {
-        const docRes = await fetch(`https://api.oregonlegislature.gov/odata/ODataService.svc/MeasureAnalysisDocuments?$filter=MeasurePrefix eq '${bill.MeasurePrefix}' and MeasureNumber eq ${bill.MeasureNumber}&$format=json`, { next: { revalidate: 3600 } });
-        if (docRes.ok) {
-          const docData = await docRes.json();
-          const docs = docData.value || [];
-          
-          const fiscalDocs = docs.filter((d: any) => d.DocumentType === 'Fiscal Impact Statement' || d.DocumentType === 'Budget Report').sort((a: any, b: any) => new Date(b.CreatedDate).getTime() - new Date(a.CreatedDate).getTime());
-          if (fiscalDocs.length > 0) fiscalUrl = fiscalDocs[0].DocumentUrl;
-
-          const revenueDocs = docs.filter((d: any) => d.DocumentType === 'Revenue Impact Statement').sort((a: any, b: any) => new Date(b.CreatedDate).getTime() - new Date(a.CreatedDate).getTime());
-          if (revenueDocs.length > 0) revenueUrl = revenueDocs[0].DocumentUrl;
-        }
-      } catch (err) {
-        console.error("Error fetching docs for bill", bill.MeasureNumber);
-      }
-      
-      return {
-        ...bill,
-        FiscalDocumentUrl: fiscalUrl,
-        RevenueDocumentUrl: revenueUrl
-      };
-    }));
-
-    return enhancedBills;
-  } catch (error) {
-    console.error("Error fetching bills:", error);
-    return [];
-  }
-}
+import { getRecentBills } from "@/lib/billsApi";
 
 export default async function Bills() {
   const bills = await getRecentBills();

@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { issuesData } from "@/data/issues";
 import InteractiveFeedback from "@/components/InteractiveFeedback";
 import Link from "next/link";
+import LiveBills from "@/components/LiveBills";
+import PublicSentimentChart from "@/components/PublicSentimentChart";
 
 // Pre-generate static routes for all known spokes during build
 export function generateStaticParams() {
@@ -68,6 +70,10 @@ export default async function SpokePage({ params }: { params: Promise<{ hubSlug:
             <h3 style={{ marginBottom: '1rem' }}>Key Tradeoffs</h3>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>{spoke.tradeoffs}</p>
           </div>
+
+          <PublicSentimentChart issueId={spoke.id} />
+          
+          <LiveBills keywords={spoke.searchKeywords || hub.searchKeywords} />
 
         </div>
       </section>

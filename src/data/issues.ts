@@ -6,6 +6,7 @@ export interface SpokeData {
   viewB: string;
   tradeoffs: string;
   feedbackPrompt: string;
+  searchKeywords?: string[];
 }
 
 export interface IssueData {
@@ -21,6 +22,7 @@ export interface IssueData {
   categoryMap: string;
   background?: string[];
   spokes?: SpokeData[];
+  searchKeywords?: string[];
 }
 
 export const issuesData: IssueData[] = [
@@ -41,6 +43,7 @@ export const issuesData: IssueData[] = [
     tradeoffs: "Housing supply vs land preservation; compassion vs public order; state funding vs local control; tenant protection vs landlord/property-owner costs.",
     feedbackPrompt: "What should Oregon prioritize most: more shelter beds, more affordable housing, stricter public camping rules, addiction/mental health services, rent relief, land use reform, or something else?",
     categoryMap: "Housing & Infrastructure",
+    searchKeywords: ["housing", "homeless", "rent", "tenant", "landlord"],
     background: [
       "Oregon is currently facing one of the most severe housing and homelessness crises in the nation. Over the last decade, housing production has severely lagged behind population growth, resulting in a dramatic spike in home prices and rental rates across the state. This affordability gap has forced many families out of their homes and contributed to a visible increase in unsheltered homelessness in both urban centers and rural communities.",
       "In response, the state legislature has debated and passed various measures aimed at increasing housing supply, funding emergency shelters, and regulating public camping. However, these solutions often ignite fierce debates over local control, property rights, and the balance between providing compassionate services and maintaining public order. Zoning reforms, such as modifying the Urban Growth Boundary or changing single-family zoning laws, are equally controversial, pitting environmental conservationists against housing advocates.",
@@ -57,7 +60,8 @@ export const issuesData: IssueData[] = [
         viewA: "Some residents argue that we must simplify and accelerate UGB expansions to build more housing, lower real estate prices, and accommodate population growth.",
         viewB: "Others believe we must protect agricultural lands and natural spaces from permanent development, preferring policies that increase urban density within existing boundaries instead.",
         tradeoffs: "Housing supply and affordability vs. preserving farmland; lower-density suburban expansion vs. high-density urban infill; local development autonomy vs. statewide environmental goals.",
-        feedbackPrompt: "Should Oregon make it easier for cities to expand their Urban Growth Boundaries to build more housing, or should we prioritize protecting farm and forest lands by building denser communities within current city limits?"
+        feedbackPrompt: "Should Oregon make it easier for cities to expand their Urban Growth Boundaries to build more housing, or should we prioritize protecting farm and forest lands by building denser communities within current city limits?",
+        searchKeywords: ["urban growth", "zoning", "land use", "development"]
       }
     ]
   },
@@ -77,6 +81,7 @@ export const issuesData: IssueData[] = [
     tradeoffs: "Lower taxes vs program funding; short-term relief vs long-term services; spending cuts vs revenue increases.",
     feedbackPrompt: "When Oregon faces a budget shortfall, should lawmakers prioritize cutting spending, raising revenue, reducing regulations to grow the economy, or restructuring existing programs?",
     categoryMap: "Economy & Jobs",
+    searchKeywords: ["tax", "fee", "cost of living", "budget", "revenue"],
     background: [
       "Household affordability is a growing concern for families across Oregon. The combination of inflation, rising utility costs, increased insurance premiums, and high property and income taxes has placed a significant strain on family budgets. Many residents feel that their paychecks are no longer keeping pace with the everyday costs of living, from groceries to gas.",
       "The debate over how to address this issue is highly polarized. On one hand, there is a strong push to lower taxes, reduce state fees, and roll back regulations to leave more money in residents' pockets and stimulate economic growth. Proponents of this view argue that Oregon's tax burden is uncompetitive and disproportionately harms working-class families and small businesses.",
@@ -93,7 +98,8 @@ export const issuesData: IssueData[] = [
         viewA: "Some residents feel that the constant barrage of local levies and bonds has made homeownership unaffordable, and want stricter caps on overall property tax burdens.",
         viewB: "Others argue the current system is outdated, starves local communities of necessary resources for schools and emergency services, and needs to be completely overhauled to be more equitable.",
         tradeoffs: "Homeowner financial stability vs. funding for local services; predictable tax caps vs. tax equity between neighbors; reliance on base taxes vs. reliance on voter-approved levies.",
-        feedbackPrompt: "How should we handle property taxes in Oregon: strictly cap them to protect homeowners from rising costs, or overhaul the system so that local communities have reliable funding for schools and emergency services?"
+        feedbackPrompt: "How should we handle property taxes in Oregon: strictly cap them to protect homeowners from rising costs, or overhaul the system so that local communities have reliable funding for schools and emergency services?",
+        searchKeywords: ["property tax", "levy", "assessment", "bond"]
       }
     ]
   },
@@ -114,6 +120,7 @@ export const issuesData: IssueData[] = [
     tradeoffs: "Treatment vs enforcement; access vs cost; statewide standards vs county-level implementation; prevention vs consequences.",
     feedbackPrompt: "Should Oregon focus more on treatment access, law enforcement accountability, deflection programs, Medicaid stability, rural healthcare, or cost control?",
     categoryMap: "Healthcare",
+    searchKeywords: ["health", "medical", "addiction", "fentanyl", "treatment", "medicaid"],
     background: [
       "Oregon's healthcare system is grappling with multiple, intersecting crises: a severe behavioral health workforce shortage, a fentanyl epidemic, and ongoing debates over how to best deliver accessible care, especially in rural areas. While the Oregon Health Plan (Medicaid) provides coverage to a large portion of the state, ensuring that patients can actually access providers—particularly for mental health and addiction treatment—remains a massive logistical hurdle.",
       "The passage and subsequent modification of Measure 110 placed Oregon at the center of a national debate on drug decriminalization and addiction treatment. The rollout of the measure faced significant criticism due to delays in funding for treatment centers and a perceived increase in public drug use. Recent legislative actions, such as HB 4002, have attempted to reintroduce certain criminal penalties while expanding 'deflection' programs aimed at steering individuals into treatment rather than jail.",
@@ -130,7 +137,8 @@ export const issuesData: IssueData[] = [
         viewA: "Some residents emphasize the urgent need to rapidly build more treatment centers and recovery housing, arguing that we cannot solve a medical crisis through the criminal justice system.",
         viewB: "Others prioritize immediate community safety, advocating for strict enforcement of public drug use laws and mandatory treatment programs as a condition of avoiding jail.",
         tradeoffs: "Voluntary treatment programs vs. court-mandated rehabilitation; immediate public order vs. long-term healthcare infrastructure; spending on law enforcement vs. spending on medical facilities.",
-        feedbackPrompt: "When addressing the fentanyl crisis, what is the best approach for our community: strictly enforcing laws to clear public spaces, investing heavily in voluntary treatment facilities, or mandating treatment through the court system?"
+        feedbackPrompt: "When addressing the fentanyl crisis, what is the best approach for our community: strictly enforcing laws to clear public spaces, investing heavily in voluntary treatment facilities, or mandating treatment through the court system?",
+        searchKeywords: ["fentanyl", "addiction", "drug", "substance", "overdose"]
       }
     ]
   },
@@ -151,6 +159,7 @@ export const issuesData: IssueData[] = [
     tradeoffs: "Public order vs civil liberties; enforcement vs treatment; victim support vs offender rehabilitation; police capacity vs police accountability.",
     feedbackPrompt: "What balance should Oregon strike between enforcement, treatment, prevention, victim support, police accountability, and court capacity?",
     categoryMap: "Public Safety",
+    searchKeywords: ["police", "crime", "justice", "public safety", "court"],
     background: [
       "Public safety and the administration of justice are fundamental responsibilities of state government, yet Oregon's system is currently facing unprecedented strain. Communities across the state are concerned about rising rates of property crime, the visible impact of the fentanyl crisis on public spaces, and the ongoing challenges of domestic violence and human trafficking.",
       "Compounding these issues is a severe crisis in the state's public defense system, leading to court backlogs and instances where individuals accused of crimes are released without representation. This backlog frustrates victims seeking justice and undermines the constitutional rights of the accused. At the same time, debates continue over police staffing levels, law enforcement accountability, and the effectiveness of current probation and reentry programs.",
@@ -175,6 +184,7 @@ export const issuesData: IssueData[] = [
     tradeoffs: "Funding vs accountability; state standards vs local control; parent input vs professional curriculum decisions; college pathways vs trades.",
     feedbackPrompt: "What should Oregon prioritize first in education: funding, accountability, teacher retention, career training, student safety, parent involvement, or academic outcomes?",
     categoryMap: "Education",
+    searchKeywords: ["school", "education", "student", "teacher", "curriculum"],
     background: [
       "Education is the cornerstone of Oregon's future, but the state's K-12 system is facing intense scrutiny over student outcomes, funding mechanisms, and the well-being of both educators and youth. Despite significant investments in recent years, Oregon continues to struggle with reading and math proficiency rates, chronic absenteeism, and a growing youth mental health crisis exacerbated by the pandemic.",
       "Educators are sounding the alarm on growing class sizes, inadequate special education resources, and burnout leading to severe teacher shortages. Meanwhile, parents and employers are increasingly focused on the relevance of the curriculum. There is a strong push to expand Career and Technical Education (CTE) and apprenticeships to ensure that high school graduates who choose not to pursue a four-year college degree are still prepared for high-paying, in-demand jobs in the trades and technology sectors.",
@@ -198,6 +208,7 @@ export const issuesData: IssueData[] = [
     tradeoffs: "Road maintenance vs tax/fee increases; urban transit vs rural roads; current maintenance vs future infrastructure; convenience vs cost.",
     feedbackPrompt: "Would you support higher transportation taxes or fees if they were dedicated to road maintenance, or should Oregon find another way to fund infrastructure?",
     categoryMap: "Housing & Infrastructure",
+    searchKeywords: ["transportation", "road", "transit", "highway", "bridge"],
     background: [
       "Oregon's transportation infrastructure is the literal foundation of our economy, but it is currently facing a severe funding shortfall. The Oregon Department of Transportation (ODOT) and local county road departments are struggling to maintain existing roads, bridges, and emergency routes. As vehicles become more fuel-efficient and the adoption of electric vehicles increases, revenue from the traditional gas tax—the primary funding source for road maintenance—is steadily declining.",
       "This funding gap has real-world consequences: an increase in potholes, delayed seismic upgrades for critical bridges, and a lack of resources for improving rural roads and freight corridors. To address the shortfall, the legislature has debated various solutions, including increasing the gas tax, implementing new vehicle registration fees, or exploring alternative funding models like tolling or a per-mile road usage charge.",
@@ -221,6 +232,7 @@ export const issuesData: IssueData[] = [
     tradeoffs: "Farms vs fish vs cities; property protection vs ecosystem protection; prevention vs suppression; insurance cost vs risk exposure.",
     feedbackPrompt: "When water or wildfire resources are limited, how should Oregon balance farms, homes, forests, fish, cities, and rural communities?",
     categoryMap: "Environment",
+    searchKeywords: ["wildfire", "water", "drought", "forest", "environment", "climate"],
     background: [
       "Oregon's natural landscape is both its greatest asset and its most complex management challenge. In recent years, the state has experienced increasingly severe and frequent wildfires, prolonged droughts, and critical water shortages. These compounding crises threaten lives, property, and the economic vitality of rural and agricultural communities, while also degrading air quality statewide.",
       "The debate over wildfire prevention is intense. Some advocate for aggressive forest management, including increased logging, fuel reduction, and prescribed burns to clear out the underbrush that fuels catastrophic fires. They emphasize the need to protect rural property owners and support the timber industry. Others prioritize climate resilience and ecosystem protections, arguing for stricter limits on development in fire-prone areas and focusing on home hardening rather than widespread logging.",
@@ -237,7 +249,8 @@ export const issuesData: IssueData[] = [
         viewA: "Some residents strongly believe that the only way to stop catastrophic fires is to aggressively manage our forests through increased logging, clearing underbrush, and putting local timber workers back in the woods.",
         viewB: "Others argue that we cannot log our way out of the crisis, and should instead focus state funds on helping homeowners fireproof their properties and strengthening emergency response capabilities.",
         tradeoffs: "Commercial logging revenues vs. environmental conservation; state-funded forest clearing vs. mandates on private property owners; proactive landscape management vs. reactive suppression tactics.",
-        feedbackPrompt: "To protect our communities from catastrophic wildfires, should the state prioritize aggressive logging and forest thinning, or focus on helping rural homeowners fireproof their properties?"
+        feedbackPrompt: "To protect our communities from catastrophic wildfires, should the state prioritize aggressive logging and forest thinning, or focus on helping rural homeowners fireproof their properties?",
+        searchKeywords: ["wildfire", "forest", "timber", "fire", "burn"]
       }
     ]
   }
