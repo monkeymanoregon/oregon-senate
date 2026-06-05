@@ -31,17 +31,7 @@ export default function PublicSentimentChart({ issueId }: { issueId: string }) {
   const { totalVotes, chartData } = generateMockData(issueId);
 
   if (totalVotes < 100) {
-    return (
-      <div style={{ backgroundColor: 'var(--bg-white)', padding: '2rem', borderRadius: '8px', border: '1px solid var(--border-color)', marginBottom: '3rem', boxShadow: 'var(--shadow-sm)', textAlign: 'center' }}>
-        <h3 style={{ marginBottom: '0.5rem', color: 'var(--primary)', fontSize: '1.4rem' }}>District Sentiment</h3>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', fontSize: '0.95rem' }}>
-          We need at least 100 verified responses to display an accurate picture of district sentiment.
-        </p>
-        <p style={{ fontWeight: '500', color: 'var(--accent)' }}>
-          Current Votes: {totalVotes} / 100
-        </p>
-      </div>
-    );
+    return null;
   }
 
   return (
