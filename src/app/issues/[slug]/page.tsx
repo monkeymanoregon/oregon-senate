@@ -53,6 +53,38 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
             <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>{issue.tradeoffs}</p>
           </div>
 
+          {issue.spokes && issue.spokes.length > 0 && (
+            <div style={{ marginBottom: '4rem' }}>
+              <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)', fontSize: '1.5rem', borderBottom: '2px solid var(--border-color)', paddingBottom: '0.5rem' }}>Deep Dives & Specific Topics</h3>
+              <p style={{ marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
+                This is a broad issue. Select a specific topic below to explore the details and share your feedback on that specific area:
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
+                {issue.spokes.map((spoke) => (
+                  <Link 
+                    key={spoke.id} 
+                    href={`/issues/${issue.id}/${spoke.id}`}
+                    style={{ 
+                      display: 'block', 
+                      padding: '1.5rem', 
+                      backgroundColor: 'var(--bg-white)', 
+                      border: '1px solid var(--border-color)',
+                      borderRadius: '8px',
+                      textDecoration: 'none',
+                      color: 'inherit',
+                      boxShadow: 'var(--shadow-sm)',
+                      transition: 'transform 0.2s'
+                    }}
+                    className="spoke-card"
+                  >
+                    <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.1rem' }}>{spoke.title}</h4>
+                    <span style={{ color: 'var(--accent)', fontWeight: '600', fontSize: '0.9rem' }}>Read More &rarr;</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
         </div>
       </section>
 
