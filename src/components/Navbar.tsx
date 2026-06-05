@@ -12,7 +12,8 @@ export default function Navbar() {
             <li><Link href="/about" className="navbar-link">About Tysan</Link></li>
             <li><Link href="/platform" className="navbar-link">The Platform</Link></li>
             <li><Link href="/bills" className="navbar-link">Vote on Bills</Link></li>
-            <li><Link href="/issues" className="navbar-link">How it Works</Link></li>
+            <li><Link href="/issues" className="navbar-link">Issues</Link></li>
+            <li><Link href="/how-it-works" className="navbar-link">How it Works</Link></li>
             <li><Link href="/volunteer" className="navbar-link">Volunteer</Link></li>
             <li><Link href="/donate" className="navbar-link">Donate</Link></li>
             <li>

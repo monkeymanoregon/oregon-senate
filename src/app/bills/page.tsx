@@ -79,7 +79,7 @@ export default async function Bills() {
             <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
               Want to dive deeper into how this process works?
             </p>
-            <Link href="/issues" className="btn btn-outline">
+            <Link href="/how-it-works" className="btn btn-outline">
               See how I vote on your behalf
             </Link>
           </div>

@@ -13,7 +13,11 @@ const issueCategories = {
   "Civil Rights & Community": ["LGBTQ+ Rights", "Racial Equity", "Veterans Affairs", "Accessibility"]
 };
 
-export default function InteractiveFeedback() {
+interface InteractiveFeedbackProps {
+  initialCategory?: string;
+}
+
+export default function InteractiveFeedback({ initialCategory = "" }: InteractiveFeedbackProps) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -23,7 +27,7 @@ export default function InteractiveFeedback() {
     whatToFocusOn: ""
   });
 
-  const [activeCategory, setActiveCategory] = useState<string>("");
+  const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
