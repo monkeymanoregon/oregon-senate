@@ -9,7 +9,8 @@ export default function Navbar() {
         </Link>
         <nav>
           <ul className="navbar-links">
-            <li><Link href="/about" className="navbar-link">About the Platform</Link></li>
+            <li><Link href="/about" className="navbar-link">About Tysan</Link></li>
+            <li><Link href="/platform" className="navbar-link">The Platform</Link></li>
             <li><Link href="/issues" className="navbar-link">How it Works</Link></li>
             <li><Link href="/volunteer" className="navbar-link">Volunteer</Link></li>
             <li><Link href="/donate" className="navbar-link">Donate</Link></li>

@@ -21,7 +21,8 @@ export default function Footer() {
             <h4>Quick Links</h4>
             <ul className="footer-links-list">
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">Platform Promise</Link></li>
+              <li><Link href="/about">About Tysan</Link></li>
+              <li><Link href="/platform">Platform Promise</Link></li>
               <li><Link href="/issues">How It Works</Link></li>
             </ul>
           </div>
