@@ -64,7 +64,10 @@ export default function BillCard({ bill }: { bill: OregonMeasureFull }) {
               
               <div className="modal-section">
                 <h4>Full Summary</h4>
-                <p className="modal-summary-text">{bill.MeasureSummary}</p>
+                <div 
+                  className="modal-summary-text" 
+                  dangerouslySetInnerHTML={{ __html: bill.MeasureSummary }} 
+                />
               </div>
 
               {(bill.FiscalImpact || bill.RevenueImpact) && (
