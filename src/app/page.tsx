@@ -63,6 +63,66 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Platform Summary Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-white)' }}>
+        <div className="container text-center">
+          <h2 className="section-title">The Promise of Representation</h2>
+          <p className="section-subtitle">
+            A modern, citizen-first approach to state governance that returns power to the voter. I will vote based on district consensus, not my personal opinion.
+          </p>
+          
+          <div className="issues-grid" style={{ marginBottom: '3rem', textAlign: 'left' }}>
+            <div className="issue-card">
+              <div className="issue-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 className="issue-title">Constituent-Led Voting</h3>
+              <p className="issue-desc">
+                My votes on the Senate floor are yours to command. The district majority vote dictates exactly how I vote on every major bill.
+              </p>
+            </div>
+
+            <div className="issue-card">
+              <div className="issue-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <h3 className="issue-title">Digital Democracy</h3>
+              <p className="issue-desc">
+                View upcoming bills, read simple summaries, and vote in real-time through secure online portals on how you want our district represented.
+              </p>
+            </div>
+          </div>
+          
+          <Link href="/about" className="btn btn-outline" style={{ display: 'inline-flex', margin: '0 auto' }}>
+            Read the Full Platform
+          </Link>
+        </div>
+      </section>
+
+      {/* Support CTA Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container text-center">
+          <h2 className="section-title">Support The Community</h2>
+          <p className="section-subtitle">
+            I will take zero money from this campaign, and zero lobbyist cash. 100% of campaign donations will go directly back into local grassroots community projects and engagement.
+          </p>
+          <div style={{ marginTop: '2rem' }}>
+            <Link href="/donate" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+              Donate Now
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
