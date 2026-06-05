@@ -62,6 +62,16 @@ export const issuesData: IssueData[] = [
         tradeoffs: "Housing supply and affordability vs. preserving farmland; lower-density suburban expansion vs. high-density urban infill; local development autonomy vs. statewide environmental goals.",
         feedbackPrompt: "Should Oregon make it easier for cities to expand their Urban Growth Boundaries to build more housing, or should we prioritize protecting farm and forest lands by building denser communities within current city limits?",
         searchKeywords: ["urban growth", "zoning", "land use", "development"]
+      },
+      {
+        id: "emergency-shelters-housing",
+        title: "Emergency Shelters vs. Permanent Housing",
+        background: ["With limited state funding available (such as Project Turnkey), lawmakers constantly debate the most effective way to help the unhoused. Some funding goes toward immediately acquiring hotels or building managed emergency shelter communities. Other funding is dedicated to long-term affordable housing construction, which takes years to complete but offers permanent stability."],
+        viewA: "Some believe the immediate crisis requires us to spend heavily on emergency shelters and transitional villages to get people off the streets quickly and provide wraparound services.",
+        viewB: "Others argue that emergency shelters are just a band-aid, and we must focus our resources entirely on building permanent, low-income housing so people have a long-term place to stay.",
+        tradeoffs: "Immediate short-term relief vs. permanent long-term stability; high operational costs for managed shelters vs. high upfront construction costs for apartments.",
+        feedbackPrompt: "When allocating state funds to address homelessness, should Oregon prioritize building emergency shelters for immediate relief, or long-term permanent affordable housing?",
+        searchKeywords: ["shelter", "turnkey", "affordable housing", "transitional", "village"]
       }
     ]
   },
@@ -100,6 +110,16 @@ export const issuesData: IssueData[] = [
         tradeoffs: "Homeowner financial stability vs. funding for local services; predictable tax caps vs. tax equity between neighbors; reliance on base taxes vs. reliance on voter-approved levies.",
         feedbackPrompt: "How should we handle property taxes in Oregon: strictly cap them to protect homeowners from rising costs, or overhaul the system so that local communities have reliable funding for schools and emergency services?",
         searchKeywords: ["property tax", "levy", "assessment", "bond"]
+      },
+      {
+        id: "small-business-regulations",
+        title: "Small Business Regulations & Taxes",
+        background: ["Oregon has implemented several new policies in recent years, including the Corporate Activities Tax (CAT) to fund education, Paid Leave Oregon to support workers, and a rising minimum wage. While these policies offer clear benefits to the workforce and public systems, many local business owners report that the combined administrative and financial burden is stifling their ability to stay open or hire new employees."],
+        viewA: "Some argue that these regulations and taxes are necessary to ensure corporations pay their fair share, workers are protected, and vital public services are properly funded.",
+        viewB: "Others believe the sheer volume of state mandates is crushing family-owned small businesses, forcing them to raise prices or shut their doors, and we must roll back these burdens.",
+        tradeoffs: "Worker protections and public revenue vs. small business viability and economic growth; state mandates vs. free-market flexibility.",
+        feedbackPrompt: "Should Oregon prioritize maintaining strong worker benefits and corporate taxes to fund state programs, or should we reduce regulations and taxes to help local small businesses survive and grow?",
+        searchKeywords: ["small business", "corporate activities tax", "paid leave", "minimum wage", "regulation"]
       }
     ]
   },
@@ -139,6 +159,16 @@ export const issuesData: IssueData[] = [
         tradeoffs: "Voluntary treatment programs vs. court-mandated rehabilitation; immediate public order vs. long-term healthcare infrastructure; spending on law enforcement vs. spending on medical facilities.",
         feedbackPrompt: "When addressing the fentanyl crisis, what is the best approach for our community: strictly enforcing laws to clear public spaces, investing heavily in voluntary treatment facilities, or mandating treatment through the court system?",
         searchKeywords: ["fentanyl", "addiction", "drug", "substance", "overdose"]
+      },
+      {
+        id: "rural-healthcare-access",
+        title: "Rural Healthcare Access",
+        background: ["Many rural Oregon communities, including parts of Southern and Eastern Oregon, are facing a severe shortage of healthcare providers. Hospitals are struggling to stay open, maternity wards are closing due to staffing issues, and patients often have to drive hours to receive specialized care or mental health services."],
+        viewA: "Some residents argue the state must step in with massive funding subsidies and aggressive incentive programs to force or pay medical professionals to practice in rural areas.",
+        viewB: "Others believe we should reduce licensing regulations, expand telehealth capabilities, and allow nurses and physician assistants to provide more care independently to solve the shortage naturally without massive state spending.",
+        tradeoffs: "Direct state financial intervention vs. regulatory reform; maintaining high licensing standards vs. expanding the pool of available providers.",
+        feedbackPrompt: "To solve the rural healthcare shortage, should Oregon focus on increasing state subsidies to attract doctors, or should we reduce regulations and rely more heavily on telehealth and nurse practitioners?",
+        searchKeywords: ["rural health", "hospital", "maternity", "doctor shortage", "telehealth", "nursing"]
       }
     ]
   },
@@ -164,6 +194,18 @@ export const issuesData: IssueData[] = [
       "Public safety and the administration of justice are fundamental responsibilities of state government, yet Oregon's system is currently facing unprecedented strain. Communities across the state are concerned about rising rates of property crime, the visible impact of the fentanyl crisis on public spaces, and the ongoing challenges of domestic violence and human trafficking.",
       "Compounding these issues is a severe crisis in the state's public defense system, leading to court backlogs and instances where individuals accused of crimes are released without representation. This backlog frustrates victims seeking justice and undermines the constitutional rights of the accused. At the same time, debates continue over police staffing levels, law enforcement accountability, and the effectiveness of current probation and reentry programs.",
       "The approach to public safety deeply divides public opinion. Some Oregonians demand a return to stronger enforcement, stricter sentencing, and a more visible police presence to restore public order and deter crime. Others advocate for criminal justice reform, emphasizing the need for addiction treatment, mental health crisis response, police accountability, and alternatives to incarceration that address the root causes of crime without disproportionately impacting marginalized communities."
+    ],
+    spokes: [
+      {
+        id: "retail-theft-crime",
+        title: "Retail Theft & Organized Crime",
+        background: ["Oregon has seen a significant rise in organized retail crime and property theft. This has led to many stores locking up everyday items or permanently closing locations, heavily impacting the daily lives of consumers and the safety of retail workers. The debate centers on how strictly to prosecute property crimes and what resources local police need."],
+        viewA: "Some believe we must crack down hard on retail theft by increasing penalties, funding specialized organized crime task forces, and fully prosecuting repeat offenders to restore public order.",
+        viewB: "Others argue that petty theft is largely a symptom of poverty and addiction, and we should focus on addressing those root causes through social services rather than filling our jails with non-violent offenders.",
+        tradeoffs: "Strict enforcement and protecting businesses vs. addressing root causes of poverty; spending on police and prisons vs. spending on social safety nets.",
+        feedbackPrompt: "How should Oregon address the rise in retail theft: by increasing criminal penalties and police funding, or by focusing resources on poverty and addiction treatment?",
+        searchKeywords: ["theft", "retail", "organized crime", "property crime", "shoplifting"]
+      }
     ]
   },
   {
@@ -189,6 +231,18 @@ export const issuesData: IssueData[] = [
       "Education is the cornerstone of Oregon's future, but the state's K-12 system is facing intense scrutiny over student outcomes, funding mechanisms, and the well-being of both educators and youth. Despite significant investments in recent years, Oregon continues to struggle with reading and math proficiency rates, chronic absenteeism, and a growing youth mental health crisis exacerbated by the pandemic.",
       "Educators are sounding the alarm on growing class sizes, inadequate special education resources, and burnout leading to severe teacher shortages. Meanwhile, parents and employers are increasingly focused on the relevance of the curriculum. There is a strong push to expand Career and Technical Education (CTE) and apprenticeships to ensure that high school graduates who choose not to pursue a four-year college degree are still prepared for high-paying, in-demand jobs in the trades and technology sectors.",
       "Debates over education policy frequently center on where to direct funding and how to measure success. Some argue that schools simply need more stable, increased funding to hire support staff, reduce class sizes, and raise teacher pay. Others contend that the primary issues are a lack of accountability, administrative bloat, and the need for greater curriculum transparency and parental involvement. Bridging the gap between these perspectives is essential for delivering the education our children deserve."
+    ],
+    spokes: [
+      {
+        id: "career-technical-education",
+        title: "Career & Technical Education (CTE)",
+        background: ["For decades, the educational system has heavily promoted a four-year university degree as the primary path to success. However, Oregon is currently facing a massive shortage of skilled tradespeople—electricians, plumbers, welders, and healthcare technicians. Many parents and employers are demanding a return to robust vocational training in high schools."],
+        viewA: "Some strongly advocate for massively expanding funding for CTE programs and apprenticeships, arguing that schools must prepare students for guaranteed, high-paying jobs in the trades rather than pushing everyone toward college debt.",
+        viewB: "Others caution that while CTE is important, we must not track students away from advanced academics or reduce funding for foundational subjects like advanced math, science, and the arts.",
+        tradeoffs: "Funding vocational shops and equipment vs. funding traditional academic classrooms; pushing immediate workforce entry vs. encouraging university degrees.",
+        feedbackPrompt: "Should Oregon significantly shift education funding to prioritize Career and Technical Education (trades/vocational training) in high schools, or maintain a focus on preparing all students for a 4-year college?",
+        searchKeywords: ["cte", "vocational", "trades", "apprenticeship", "career", "workforce"]
+      }
     ]
   },
   {
@@ -213,6 +267,18 @@ export const issuesData: IssueData[] = [
       "Oregon's transportation infrastructure is the literal foundation of our economy, but it is currently facing a severe funding shortfall. The Oregon Department of Transportation (ODOT) and local county road departments are struggling to maintain existing roads, bridges, and emergency routes. As vehicles become more fuel-efficient and the adoption of electric vehicles increases, revenue from the traditional gas tax—the primary funding source for road maintenance—is steadily declining.",
       "This funding gap has real-world consequences: an increase in potholes, delayed seismic upgrades for critical bridges, and a lack of resources for improving rural roads and freight corridors. To address the shortfall, the legislature has debated various solutions, including increasing the gas tax, implementing new vehicle registration fees, or exploring alternative funding models like tolling or a per-mile road usage charge.",
       "These proposals are highly contentious. Many residents strongly oppose any new taxes or fees, arguing that household budgets are already stretched too thin and that state agencies must first demonstrate greater accountability and efficiency with existing funds. Conversely, others argue that without new revenue, the state's infrastructure will deteriorate to dangerous levels, jeopardizing public safety, economic growth, and the reliability of essential transit and freight networks."
+    ],
+    spokes: [
+      {
+        id: "road-funding-gas-tax",
+        title: "Road Funding & The Gas Tax",
+        background: ["Oregon's roads are primarily funded by the gas tax. As cars become more efficient and electric vehicles (EVs) avoid the gas pump entirely, road funding is plummeting while maintenance costs skyrocket. The state is exploring alternatives, such as a per-mile road usage charge (OReGO) or increasing general registration fees, to make up the difference."],
+        viewA: "Some residents support shifting to a per-mile usage fee or tolling system, arguing that those who drive the most (including heavy EV users) should pay their fair share for the wear and tear on the roads.",
+        viewB: "Others fiercely oppose tracking mileage or adding tolls, arguing that these systems disproportionately hurt rural Oregonians and commuters who have no choice but to drive long distances.",
+        tradeoffs: "Fairness of pay-per-mile vs. privacy concerns of tracking mileage; steady revenue for road repair vs. increased financial burden on long-distance rural commuters.",
+        feedbackPrompt: "As gas tax revenues decline, how should Oregon fund road repairs: by implementing a per-mile driving charge, increasing flat registration fees for everyone, or tolling major highways?",
+        searchKeywords: ["gas tax", "orego", "toll", "mileage", "registration fee", "road maintenance"]
+      }
     ]
   },
   {
@@ -251,6 +317,16 @@ export const issuesData: IssueData[] = [
         tradeoffs: "Commercial logging revenues vs. environmental conservation; state-funded forest clearing vs. mandates on private property owners; proactive landscape management vs. reactive suppression tactics.",
         feedbackPrompt: "To protect our communities from catastrophic wildfires, should the state prioritize aggressive logging and forest thinning, or focus on helping rural homeowners fireproof their properties?",
         searchKeywords: ["wildfire", "forest", "timber", "fire", "burn"]
+      },
+      {
+        id: "water-rights-drought",
+        title: "Water Rights & Drought",
+        background: ["Oregon—particularly Southern and Eastern Oregon—frequently battles severe drought conditions. The state must allocate limited water resources among agricultural farmers who need it for crops, municipalities that need it for drinking water, and environmental regulations that require water to be kept in rivers to protect endangered fish species."],
+        viewA: "Some prioritize the agricultural industry and rural livelihoods, arguing that without secure water rights for farming, our local food supply and rural economies will collapse.",
+        viewB: "Others prioritize environmental and tribal obligations, arguing that we must maintain minimum river flows to prevent the extinction of native fish species and protect the long-term health of the ecosystem.",
+        tradeoffs: "Economic survival of local farms vs. ecological survival of native fish; commercial water use vs. environmental conservation mandates.",
+        feedbackPrompt: "During times of severe drought, how should Oregon prioritize limited water resources: protecting agricultural farming operations or maintaining river flows for endangered fish and wildlife?",
+        searchKeywords: ["water", "drought", "klamath", "agriculture", "farm", "fish"]
       }
     ]
   }
