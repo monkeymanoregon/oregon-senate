@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="footer-about">
             <h3>Tysan for Senate</h3>
             <p>
-              Pragmatic, direct democracy leadership focused entirely on voting in accordance with the will of Oregon's district citizens.
+              Pragmatic, direct democracy leadership focused entirely on voting in accordance with the will of the citizens of Oregon's District 3.
             </p>
           </div>
           <div className="footer-links">
@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Tysan for Oregon State Senate. All rights reserved. Built with pride for Oregon.</p>
+          <p>&copy; {new Date().getFullYear()} Tysan for Oregon State Senate District 3. All rights reserved. Built with pride for Oregon.</p>
         </div>
       </div>
     </footer>

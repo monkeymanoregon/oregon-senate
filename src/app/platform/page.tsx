@@ -23,7 +23,7 @@ export default function About() {
               For too long, politicians have entered office to push their own agendas, follow party lines, or spend their time dialing for dollars. They vote based on backroom deals rather than the actual will of their constituents.
             </p>
             <p>
-              I believe a representative's job is to represent, not to dictate. That's why I'm running on a unique platform: my personal opinion doesn't matter. My votes in the Senate will be determined directly by the majority of the people I represent.
+              I believe a representative's job is to represent, not to dictate. That's why I'm running on a unique platform: my personal opinion doesn't matter. My votes in the Senate will be determined directly by the majority of the people I represent in District 3 (Medford, Ashland, Jacksonville, and the Rogue Valley).
             </p>
             <div className="about-quote">
               "A politician's job shouldn't be about raising money or forcing a personal agenda. It should be about listening to the majority and casting votes accordingly. That is how a real democracy should work."

@@ -66,7 +66,7 @@ export default function InteractiveFeedback() {
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
         <h3>Thanks for reaching out!</h3>
-        <p>Your message has been sent straight to my personal inbox, {formData.firstName || 'friend'}. I read every single submission so I know exactly what you want me to focus on.</p>
+        <p>Your message has been sent straight to my personal inbox, {formData.firstName || 'friend'}. I read every single submission so I know exactly what you want me to focus on for District 3.</p>
       </div>
     );
   }

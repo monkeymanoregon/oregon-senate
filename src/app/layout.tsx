@@ -17,10 +17,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tysan for Oregon State Senate | Official Campaign Website",
+  title: "Tysan for Oregon State Senate | District 3",
   description: "Join Tysan's campaign for Oregon State Senate. Working together for economic growth, outstanding education, community safety, and a better future for all Oregonians.",
   openGraph: {
-    title: "Tysan for Oregon State Senate | Official Campaign Website",
+    title: "Tysan for Oregon State Senate | District 3",
     description: "Join Tysan's campaign for Oregon State Senate. Working together for economic growth, outstanding education, community safety, and a better future for all Oregonians.",
     images: [{ url: "/candidate_portrait.png" }],
   },
