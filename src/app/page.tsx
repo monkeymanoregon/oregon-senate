@@ -30,7 +30,7 @@ export default function Home() {
             <div className="hero-image-bg"></div>
             <div className="hero-image-container">
               <Image
-                src="/candidate_portrait.png"
+                src="/candidate_hero.jpg"
                 alt="Tysan - Candidate for Oregon State Senate"
                 width={400}
                 height={400}
