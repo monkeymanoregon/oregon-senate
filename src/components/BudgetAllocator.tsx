@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { submitBudget, getBudgetAverages, BudgetAllocation } from "@/lib/firebase";
 
 interface BudgetCategory {
-  key: string;
+  key: keyof BudgetAllocation;
   name: string;
   desc: string;
   districtAvg: number;
@@ -43,19 +44,42 @@ const BUDGET_CATEGORIES: BudgetCategory[] = [
 ];
 
 export default function BudgetAllocator() {
-  const [allocation, setAllocation] = useState<{ [key: string]: number }>({
+  const [allocation, setAllocation] = useState<BudgetAllocation>({
     housing: 20,
     wildfire: 20,
     education: 20,
     safety: 20,
     roads: 20,
   });
+  const [districtAvg, setDistrictAvg] = useState<BudgetAllocation>({
+    housing: 28,
+    wildfire: 24,
+    education: 20,
+    safety: 15,
+    roads: 13,
+  });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Load live budget averages from Firestore on load & when submitted changes
+  useEffect(() => {
+    async function loadAverages() {
+      try {
+        const avgs = await getBudgetAverages();
+        setDistrictAvg(avgs);
+      } catch (err) {
+        console.error("Error loading budget averages:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadAverages();
+  }, [submitted]);
 
   const totalAllocated = Object.values(allocation).reduce((a, b) => a + b, 0);
   const remaining = 100 - totalAllocated;
 
-  const handleSliderChange = (key: string, value: number) => {
+  const handleSliderChange = (key: keyof BudgetAllocation, value: number) => {
     setAllocation((prev) => ({
       ...prev,
       [key]: value,
@@ -74,10 +98,15 @@ export default function BudgetAllocator() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (totalAllocated === 100) {
-      setSubmitted(true);
+      try {
+        await submitBudget(allocation);
+        setSubmitted(true);
+      } catch (err) {
+        console.error("Error submitting budget:", err);
+      }
     }
   };
 
@@ -233,7 +262,7 @@ export default function BudgetAllocator() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem", marginBottom: "2.5rem" }}>
             {BUDGET_CATEGORIES.map((cat) => {
               const userVal = allocation[cat.key];
-              const avgVal = cat.districtAvg;
+              const avgVal = districtAvg[cat.key] ?? cat.districtAvg;
               
               return (
                 <div key={cat.key}>

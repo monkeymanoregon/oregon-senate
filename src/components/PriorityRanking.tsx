@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { submitPriorities, getPriorityAverages, PriorityAverages } from "@/lib/firebase";
 
 interface PriorityItem {
-  id: string;
+  id: keyof PriorityAverages;
   title: string;
   desc: string;
-  aggScore: number; // District average percentage score
+  aggScore: number; // District average percentage score default fallback
 }
 
 const INITIAL_PRIORITIES: PriorityItem[] = [
@@ -56,7 +57,32 @@ const INITIAL_PRIORITIES: PriorityItem[] = [
 
 export default function PriorityRanking() {
   const [items, setItems] = useState<PriorityItem[]>(INITIAL_PRIORITIES);
+  const [districtAvg, setDistrictAvg] = useState<PriorityAverages>({
+    wildfire: 94,
+    housing: 89,
+    cost_of_living: 85,
+    safety: 78,
+    education: 76,
+    healthcare: 72,
+    transit: 65,
+  });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Load live averages from Firestore on load & when submitted changes
+  useEffect(() => {
+    async function loadAverages() {
+      try {
+        const avgs = await getPriorityAverages();
+        setDistrictAvg(avgs);
+      } catch (err) {
+        console.error("Error loading priority averages:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadAverages();
+  }, [submitted]);
 
   const moveItem = (index: number, direction: "up" | "down") => {
     const targetIndex = direction === "up" ? index - 1 : index + 1;
@@ -69,13 +95,24 @@ export default function PriorityRanking() {
     setItems(newItems);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    try {
+      const rankedIds = items.map((item) => item.id);
+      await submitPriorities(rankedIds);
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Error submitting priorities:", err);
+    }
   };
 
-  // Sort district aggregates descending to show a clean chart
-  const sortedAggregates = [...INITIAL_PRIORITIES].sort((a, b) => b.aggScore - a.aggScore);
+  // Sort aggregates descending to show a clean chart based on live averages
+  const sortedAggregates = [...INITIAL_PRIORITIES]
+    .map((item) => ({
+      ...item,
+      liveScore: districtAvg[item.id] ?? item.aggScore,
+    }))
+    .sort((a, b) => b.liveScore - a.liveScore);
 
   return (
     <div 
@@ -238,12 +275,12 @@ export default function PriorityRanking() {
               <div key={item.id}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.4rem", fontSize: "0.95rem" }}>
                   <strong style={{ color: "var(--primary)" }}>{item.title}</strong>
-                  <span style={{ color: "var(--accent)", fontWeight: "bold" }}>{item.aggScore}% Priority Score</span>
+                  <span style={{ color: "var(--accent)", fontWeight: "bold" }}>{item.liveScore}% Priority Score</span>
                 </div>
                 <div style={{ width: "100%", height: "12px", backgroundColor: "#f1f5f9", borderRadius: "6px", overflow: "hidden" }}>
                   <div 
                     style={{ 
-                      width: `${item.aggScore}%`, 
+                      width: `${item.liveScore}%`, 
                       height: "100%", 
                       backgroundColor: "var(--accent)", 
                       borderRadius: "6px",
