@@ -1,9 +1,10 @@
 import Image from "next/image";
+import BudgetAllocator from "@/components/BudgetAllocator";
 
 export default function About() {
   return (
     <div style={{ paddingTop: '80px' }}>
-      <section className="about section-padding">
+      <section className="about section-padding" style={{ paddingBottom: '2rem' }}>
         <div className="container about-grid">
           <div className="hero-image-wrapper">
             <div className="hero-image-bg" style={{ transform: 'rotate(3deg)', background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%)' }}></div>
@@ -35,6 +36,12 @@ export default function About() {
               I will utilize secure, modern online tools alongside classic, face-to-face town halls to ensure every voter has a direct say on upcoming bills. I won't make my time in office about fundraising or campaign posturing. I will spend it listening to you.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <BudgetAllocator />
         </div>
       </section>
     </div>
