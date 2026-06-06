@@ -38,6 +38,14 @@ async function fetchMasterList(): Promise<any[]> {
 }
 
 /**
+ * Helper to truncate text to a specified maximum length with an ellipsis.
+ */
+function truncateText(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength).trim() + "...";
+}
+
+/**
  * Maps a LegiScan bill object to the OregonMeasureFull structure required by the UI components.
  */
 function mapLegiScanBill(bill: any): OregonMeasureFull {
@@ -45,12 +53,13 @@ function mapLegiScanBill(bill: any): OregonMeasureFull {
   const match = numberStr.match(/^([A-Za-z]+)(\d+)$/);
   const MeasurePrefix = match ? match[1] : "HB";
   const MeasureNumber = match ? parseInt(match[2], 10) : 0;
+  const description = bill.description || bill.title || "";
 
   return {
     MeasurePrefix,
     MeasureNumber,
-    CatchLine: bill.description || bill.title || "",
-    MeasureSummary: bill.description || bill.title || "",
+    CatchLine: truncateText(description, 140),
+    MeasureSummary: description,
     CurrentLocation: bill.last_action || "Unknown",
     RelatingTo: bill.title || "",
     FiscalImpact: null,
