@@ -1,73 +1,105 @@
 import { OregonMeasureFull } from "@/components/BillCard";
 
-async function enhanceBills(bills: OregonMeasureFull[]): Promise<OregonMeasureFull[]> {
-  return await Promise.all(bills.map(async (bill) => {
-    let fiscalUrl = null;
-    let revenueUrl = null;
-    try {
-      const docRes = await fetch(`https://api.oregonlegislature.gov/odata/ODataService.svc/MeasureAnalysisDocuments?$filter=MeasurePrefix eq '${bill.MeasurePrefix}' and MeasureNumber eq ${bill.MeasureNumber}&$format=json`, { next: { revalidate: 3600 } });
-      if (docRes.ok) {
-        const docData = await docRes.json();
-        const docs = docData.value || [];
-        
-        const fiscalDocs = docs.filter((d: any) => d.DocumentType === 'Fiscal Impact Statement' || d.DocumentType === 'Budget Report').sort((a: any, b: any) => new Date(b.CreatedDate).getTime() - new Date(a.CreatedDate).getTime());
-        if (fiscalDocs.length > 0) fiscalUrl = fiscalDocs[0].DocumentUrl;
+const apiKey = process.env.LEGISCAN_API_KEY || "35b7ef169631ba28c9591d26c4c69238";
 
-        const revenueDocs = docs.filter((d: any) => d.DocumentType === 'Revenue Impact Statement').sort((a: any, b: any) => new Date(b.CreatedDate).getTime() - new Date(a.CreatedDate).getTime());
-        if (revenueDocs.length > 0) revenueUrl = revenueDocs[0].DocumentUrl;
-      }
-    } catch (err) {
-      console.error("Error fetching docs for bill", bill.MeasureNumber);
-    }
-    
-    return {
-      ...bill,
-      FiscalDocumentUrl: fiscalUrl,
-      RevenueDocumentUrl: revenueUrl
-    };
-  }));
-}
-
-export async function getRecentBills(limit = 6): Promise<OregonMeasureFull[]> {
+/**
+ * Fetches the master list of bills for Oregon from the LegiScan API.
+ * Uses Next.js cache revalidation to limit API requests.
+ */
+async function fetchMasterList(): Promise<any[]> {
   try {
-    const res = await fetch(
-      `https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=(MeasurePrefix eq 'SB' or MeasurePrefix eq 'HB')&$orderby=CreatedDate desc&$top=${limit}&$format=json`,
-      { next: { revalidate: 3600 } }
-    );
+    const url = `https://api.legiscan.com/?key=${apiKey}&op=getMasterList&state=OR`;
+    const res = await fetch(url, { next: { revalidate: 3600 } });
     if (!res.ok) {
-      console.error("Failed to fetch bills");
+      console.error("Failed to fetch LegiScan master list:", res.statusText);
       return [];
     }
     const data = await res.json();
-    const bills: OregonMeasureFull[] = data.value || [];
-    return enhanceBills(bills);
+    if (!data) {
+      console.error("No data returned from LegiScan API");
+      return [];
+    }
+    if (data.status === "ERROR") {
+      console.error("LegiScan API error:", data.alert?.message || "Unknown error");
+      return [];
+    }
+    if (!data.masterlist) {
+      console.error("Invalid response structure from LegiScan API:", data);
+      return [];
+    }
+    // Filter out metadata elements like "session" and keep only objects with a bill_id
+    return Object.keys(data.masterlist)
+      .map((k) => data.masterlist[k])
+      .filter((b) => b && typeof b === "object" && b.bill_id);
   } catch (error) {
-    console.error("Error fetching bills:", error);
+    console.error("Error fetching master list from LegiScan:", error);
     return [];
   }
 }
 
+/**
+ * Maps a LegiScan bill object to the OregonMeasureFull structure required by the UI components.
+ */
+function mapLegiScanBill(bill: any): OregonMeasureFull {
+  const numberStr = bill.number || "";
+  const match = numberStr.match(/^([A-Za-z]+)(\d+)$/);
+  const MeasurePrefix = match ? match[1] : "HB";
+  const MeasureNumber = match ? parseInt(match[2], 10) : 0;
+
+  return {
+    MeasurePrefix,
+    MeasureNumber,
+    CatchLine: bill.description || bill.title || "",
+    MeasureSummary: bill.description || bill.title || "",
+    CurrentLocation: bill.last_action || "Unknown",
+    RelatingTo: bill.title || "",
+    FiscalImpact: null,
+    RevenueImpact: null,
+    EffectiveDate: bill.status_date || null,
+    ModifiedDate: bill.last_action_date || null,
+    FiscalDocumentUrl: bill.url || null,
+    RevenueDocumentUrl: null,
+  };
+}
+
+/**
+ * Gets recent bills sorted by the last action date descending.
+ */
+export async function getRecentBills(limit = 6): Promise<OregonMeasureFull[]> {
+  const bills = await fetchMasterList();
+  if (bills.length === 0) return [];
+
+  // Sort by last_action_date descending
+  const sorted = bills.sort((a, b) => {
+    const dateA = new Date(a.last_action_date || "1970-01-01").getTime();
+    const dateB = new Date(b.last_action_date || "1970-01-01").getTime();
+    return dateB - dateA;
+  });
+
+  return sorted.slice(0, limit).map(mapLegiScanBill);
+}
+
+/**
+ * Gets bills filtered by keywords in the title or description, sorted by last action date.
+ */
 export async function getBillsByKeywords(keywords: string[], limit = 3): Promise<OregonMeasureFull[]> {
   if (!keywords || keywords.length === 0) return [];
 
-  try {
-    // Construct OData filter string using substringof
-    // Example: (substringof('housing', tolower(RelatingTo)) or substringof('homeless', tolower(RelatingTo)))
-    const keywordFilters = keywords.map(kw => `substringof('${kw.toLowerCase()}', tolower(RelatingTo)) or substringof('${kw.toLowerCase()}', tolower(CatchLine))`);
-    const filterString = `(${keywordFilters.join(' or ')})`;
-    
-    const url = `https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=(MeasurePrefix eq 'SB' or MeasurePrefix eq 'HB') and ${filterString}&$orderby=CreatedDate desc&$top=${limit}&$format=json`;
+  const bills = await fetchMasterList();
+  if (bills.length === 0) return [];
 
-    const res = await fetch(url, { next: { revalidate: 3600 } });
-    if (!res.ok) {
-      console.error("Failed to fetch bills by keywords");
-      return [];
-    }
-    const data = await res.json();
-    const bills: OregonMeasureFull[] = data.value || [];
-    return enhanceBills(bills);
-  } catch (error) {
-    console.error("Error fetching bills by keyword:", error);
-    return [];
-  }
+  // Filter bills in memory matching any keyword (case-insensitive)
+  const filtered = bills.filter((bill) => {
+    const text = `${bill.title || ""} ${bill.description || ""}`.toLowerCase();
+    return keywords.some((kw) => text.includes(kw.toLowerCase()));
+  });
+
+  // Sort by last_action_date descending
+  const sorted = filtered.sort((a, b) => {
+    const dateA = new Date(a.last_action_date || "1970-01-01").getTime();
+    const dateB = new Date(b.last_action_date || "1970-01-01").getTime();
+    return dateB - dateA;
+  });
+
+  return sorted.slice(0, limit).map(mapLegiScanBill);
 }
