@@ -31,7 +31,7 @@ async function enhanceBills(bills: OregonMeasureFull[]): Promise<OregonMeasureFu
 export async function getRecentBills(limit = 6): Promise<OregonMeasureFull[]> {
   try {
     const res = await fetch(
-      `https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=MeasurePrefix eq 'SB'&$orderby=CreatedDate desc&$top=${limit}&$format=json`,
+      `https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=(MeasurePrefix eq 'SB' or MeasurePrefix eq 'HB')&$orderby=CreatedDate desc&$top=${limit}&$format=json`,
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) {
@@ -56,7 +56,7 @@ export async function getBillsByKeywords(keywords: string[], limit = 3): Promise
     const keywordFilters = keywords.map(kw => `substringof('${kw.toLowerCase()}', tolower(RelatingTo)) or substringof('${kw.toLowerCase()}', tolower(CatchLine))`);
     const filterString = `(${keywordFilters.join(' or ')})`;
     
-    const url = `https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=MeasurePrefix eq 'SB' and ${filterString}&$orderby=CreatedDate desc&$top=${limit}&$format=json`;
+    const url = `https://api.oregonlegislature.gov/odata/ODataService.svc/Measures?$filter=(MeasurePrefix eq 'SB' or MeasurePrefix eq 'HB') and ${filterString}&$orderby=CreatedDate desc&$top=${limit}&$format=json`;
 
     const res = await fetch(url, { next: { revalidate: 3600 } });
     if (!res.ok) {

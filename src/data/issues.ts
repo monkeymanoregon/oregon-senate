@@ -45,8 +45,8 @@ export const issuesData: IssueData[] = [
     categoryMap: "Housing & Infrastructure",
     searchKeywords: ["housing", "homeless", "rent", "tenant", "landlord"],
     background: [
-      "Senate District 3—including Medford, Ashland, Jacksonville, Talent, and Phoenix—is facing one of the most severe housing and affordability crises in Oregon. Over the last decade, housing production in the Rogue Valley has lagged behind population growth, resulting in a dramatic spike in home prices and rental rates. This has been worsened by the loss of thousands of residential units during the 2020 Almeda Fire, which placed unprecedented strain on the local housing market.",
-      "In response, cities across the Rogue Valley have taken different approaches to managed campgrounds, emergency shelter funding, and public camping regulations. These local policies frequently ignite debates over municipal control, property rights, and the balance between providing compassionate services and maintaining public spaces. Finding a consensus requires listening to all perspectives, from local renters and unhoused individuals to homeowners and business operators.",
+      "Senate District 3—including Medford, Ashland, Jacksonville, Talent, and Phoenix—is facing one of the most severe housing and affordability crises in Oregon. Over the last decade, housing production in the Rogue and Applegate valleys has lagged behind population growth, resulting in a dramatic spike in home prices and rental rates. This has been severely worsened by the loss of thousands of residential units during the 2020 Almeda Fire, which destroyed a significant portion of the affordable housing stock in Talent and Phoenix, placing unprecedented strain on the local market.",
+      "In response, cities across the Rogue Valley have taken different approaches to managed campgrounds, emergency shelter funding, and public camping regulations. These local policies frequently ignite debates over municipal control, property rights, and the balance between providing compassionate services and maintaining public spaces. Finding a consensus requires listening to all perspectives, from local renters and unhoused individuals to homeowners and business operators in both our larger cities and smaller agricultural towns.",
       "As our communities look to the future, we must decide where to direct state and local resources. Should the focus be on expanding permanent supportive housing, enforcing stricter camping regulations, or removing regulatory barriers to accelerate private residential construction in the valley?"
     ],
     spokes: [
@@ -55,7 +55,7 @@ export const issuesData: IssueData[] = [
         title: "Urban Growth Boundaries & Land Use",
         background: [
           "Oregon's land-use planning system mandates that every city maintain an Urban Growth Boundary (UGB) to control urban sprawl and protect surrounding farm and forest lands. While this system has successfully preserved the Rogue Valley's natural beauty and agricultural heritage, it is increasingly cited as a barrier to housing development.",
-          "As populations have grown, cities like Medford have struggled to find buildable land within their boundaries to meet the demand for new homes. Expanding a UGB requires a complex, multi-year approval process involving state oversight and local governments. In District 3, this friction pits housing developers and municipal leaders looking to build against conservation groups and rural agricultural landowners."
+          "As populations have grown, cities like Medford and Ashland have struggled to find buildable land within their boundaries to meet the demand for new homes, while historic communities like Jacksonville face unique growth pressures. Expanding a UGB requires a complex, multi-year approval process involving state oversight and local governments. In District 3, this friction pits housing developers and municipal leaders looking to build against conservation groups and rural agricultural landowners."
         ],
         viewA: "Some residents argue that we must simplify and accelerate UGB expansions in the Medford and Ashland areas to build more housing, lower real estate prices, and accommodate local families.",
         viewB: "Others believe we must protect the Rogue Valley's fertile agricultural lands and vineyards from permanent development, preferring policies that increase urban density within existing boundaries instead.",
@@ -93,7 +93,7 @@ export const issuesData: IssueData[] = [
     categoryMap: "Economy & Jobs",
     searchKeywords: ["tax", "fee", "cost of living", "budget", "revenue"],
     background: [
-      "Household affordability is a major concern for families across District 3. The combination of inflation, rising utility costs, increased insurance premiums, and high property and income taxes has placed a significant strain on family budgets in Jackson County. Many residents feel that their paychecks are no longer keeping pace with the everyday costs of living, from groceries to gas.",
+      "Household affordability is a major concern for families across District 3. The combination of inflation, rising utility costs, increased insurance premiums, and high property and income taxes has placed a significant strain on family budgets in Jackson County. Many residents in the Rogue and Applegate valleys, particularly in rural communities like Ruch, Gold Hill, and Rogue River, feel that their paychecks are no longer keeping pace with the everyday costs of living, from groceries to gas.",
       "The debate over how to address this issue is highly polarized. On one hand, there is a strong push to lower taxes, reduce state fees, and roll back regulations to leave more money in residents' pockets and stimulate economic growth. Proponents of this view argue that the tax burden is uncompetitive and disproportionately harms working-class families and local small businesses in the Rogue Valley.",
       "On the other hand, reducing revenue means making difficult cuts to essential public services. Many residents argue that taxes and fees are necessary to fund critical public infrastructure, education, healthcare, and safety-net programs that vulnerable citizens rely on. Finding the right balance between household tax relief and adequately funding local public services is one of the most pressing challenges facing our state representatives."
     ],
@@ -114,7 +114,7 @@ export const issuesData: IssueData[] = [
       {
         id: "small-business-regulations",
         title: "Small Business Regulations & Taxes",
-        background: ["Rogue Valley businesses—ranging from Medford retail shops to local vineyards and Ashland tourism services—must navigate several state regulations, including the Corporate Activities Tax (CAT), Paid Leave Oregon, and minimum wage increases. While these policies offer benefits to the workforce and public systems, many local business owners report that the combined administrative and financial burden is stifling their ability to stay open or hire local employees."],
+        background: ["Rogue Valley businesses—ranging from Medford retail shops to local vineyards in the Applegate Valley and tourism services in Jacksonville and Ashland—must navigate several state regulations, including the Corporate Activities Tax (CAT), Paid Leave Oregon, and minimum wage increases. While these policies offer benefits to the workforce and public systems, many local business owners report that the combined administrative and financial burden is stifling their ability to stay open or hire local employees."],
         viewA: "Some argue that these regulations and taxes are necessary to ensure corporations pay their fair share, workers are protected, and vital public services are properly funded.",
         viewB: "Others believe the sheer volume of state mandates is crushing family-owned small businesses in District 3, forcing them to raise prices or shut their doors, and we must roll back these burdens.",
         tradeoffs: "Worker protections and public revenue vs. small business viability and economic growth; state mandates vs. free-market flexibility.",
@@ -142,7 +142,7 @@ export const issuesData: IssueData[] = [
     categoryMap: "Healthcare",
     searchKeywords: ["health", "medical", "addiction", "fentanyl", "treatment", "medicaid"],
     background: [
-      "Our region is grappling with multiple, intersecting healthcare crises: a severe behavioral health workforce shortage, a fentanyl epidemic, and ongoing challenges in delivering accessible care, particularly in rural parts of District 3. While regional providers like Asante Health System and Providence Medford Medical Center serve a large portion of the valley, ensuring that patients can actually access providers—particularly for mental health and addiction treatment—remains a massive challenge.",
+      "Our region is grappling with multiple, intersecting healthcare crises: a severe behavioral health workforce shortage, a fentanyl epidemic, and ongoing challenges in delivering accessible care, particularly in rural parts of District 3. While regional providers like Asante Health System and Providence Medford Medical Center serve a large portion of the valley, ensuring that patients can actually access providers—particularly for mental health and addiction treatment—remains a massive challenge, especially for residents in outlying communities like Rogue River, Gold Hill, and Ruch who must travel to central Medford or Ashland for care.",
       "The fentanyl crisis has hit Jackson County particularly hard, leading to a rise in overdoses and public safety concerns. In response to state policy shifts, Jackson County has worked to establish 'deflection' programs under HB 4002, which aim to steer individuals arrested for drug possession into local treatment and recovery programs rather than jail.",
       "The core tension lies in finding the right balance between a public health approach and public safety. Should the state focus its resources strictly on expanding treatment beds, recovery programs, and local prevention, or should there be a stronger emphasis on accountability and consequences for drug-related offenses in our communities?"
     ],
@@ -163,7 +163,7 @@ export const issuesData: IssueData[] = [
       {
         id: "rural-healthcare-access",
         title: "Rural Healthcare Access",
-        background: ["In the outlying and rural areas of District 3, residents face a severe shortage of primary care doctors and specialists. Regional clinics face staffing hurdles, and patients frequently have to drive long distances to Medford or even out of the region to receive specialized care or urgent mental health services."],
+        background: ["In the outlying and rural areas of District 3, residents face a severe shortage of primary care doctors and specialists. Regional clinics face staffing hurdles, and patients frequently have to drive long distances from places like Applegate, Ruch, or Gold Hill to Medford or even out of the region to receive specialized care or urgent mental health services."],
         viewA: "Some residents argue the state must step in with financial incentives, tuition forgiveness, and targeted funding subsidies to attract and retain doctors in rural Southern Oregon.",
         viewB: "Others believe we should reduce licensing regulations, expand telehealth capabilities, and allow nurse practitioners and physician assistants to provide more care independently to solve the shortage naturally.",
         tradeoffs: "Direct state financial intervention vs. regulatory reform; maintaining high licensing standards vs. expanding the pool of available providers.",
@@ -191,7 +191,7 @@ export const issuesData: IssueData[] = [
     categoryMap: "Public Safety",
     searchKeywords: ["police", "crime", "justice", "public safety", "court"],
     background: [
-      "Public safety and the administration of justice are fundamental local concerns. In the Rogue Valley, communities are navigating challenges related to property crime, public drug use, and domestic violence. Furthermore, Jackson County has faced pressure on jail capacity and backlogs in the local court system, which delays resolution for victims and the accused alike.",
+      "Public safety and the administration of justice are fundamental local concerns. In the Rogue Valley, communities are navigating challenges related to property crime, public drug use, and response times, especially in smaller towns like Rogue River and Gold Hill that rely heavily on county sheriff support and state police coordination.",
       "A key part of the conversation is the state's ongoing public defense crisis. A shortage of public defenders in Southern Oregon has led to cases being dismissed or delayed, raising serious concerns about constitutional rights and public safety. At the same time, local police departments are focused on staffing, community outreach, and responding to behavioral health crises.",
       "The approach to public safety deeply divides local opinion. Some residents demand a return to stronger enforcement, stricter sentencing, and a more visible police presence to restore order. Others advocate for criminal justice reform, emphasizing the need for addiction treatment, mental health crisis response, and alternatives to incarceration that address the root causes of crime."
     ],
@@ -199,7 +199,7 @@ export const issuesData: IssueData[] = [
       {
         id: "retail-theft-crime",
         title: "Retail Theft & Organized Crime",
-        background: ["Local businesses in the Rogue Valley—from retail hubs in Medford to historic merchants in Jacksonville—have reported concerns over rising shoplifting and organized retail theft. This impact affects daily operations, consumer costs, and the safety of retail workers. The debate centers on how strictly to prosecute property crimes and what resources local police need to respond."],
+        background: ["Local businesses in the Rogue Valley—from major retail hubs in Medford to historic merchants in Jacksonville—have reported concerns over rising shoplifting and organized retail theft. This impact affects daily operations, consumer costs, and the safety of retail workers. The debate centers on how strictly to prosecute property crimes and what resources local police need to respond."],
         viewA: "Some believe we must crack down hard on retail theft by increasing penalties, funding specialized organized crime task forces, and fully prosecuting repeat offenders to protect our local businesses.",
         viewB: "Others argue that property theft is often a symptom of underlying poverty and addiction, and we should focus on addressing those root causes through social services rather than filling local jails.",
         tradeoffs: "Strict enforcement and protecting businesses vs. addressing root causes of poverty; spending on police and prisons vs. spending on social safety nets.",
@@ -264,8 +264,8 @@ export const issuesData: IssueData[] = [
     categoryMap: "Housing & Infrastructure",
     searchKeywords: ["transportation", "road", "transit", "highway", "bridge"],
     background: [
-      "Our region's transportation infrastructure is the foundation of the local economy. Regional road departments and the Oregon Department of Transportation (ODOT) face funding constraints to maintain key transit corridors like the I-5 corridor through Medford and Ashland, Highway 99, and Highway 62. As vehicles become more fuel-efficient and electric vehicle adoption increases, revenue from the traditional gas tax is declining.",
-      "This funding gap impacts road repairs, bridge maintenance, and emergency evacuation route planning in the Rogue Valley. Additionally, local public transit systems, such as the Rogue Valley Transportation District (RVTD), must balance services between connecting outlying towns like Phoenix and Talent and servicing high-density routes in Medford.",
+      "Our region's transportation infrastructure is the foundation of the local economy. Regional road departments and the Oregon Department of Transportation (ODOT) face funding constraints to maintain key transit corridors like the I-5 corridor through Medford and Ashland, Highway 238 connecting Jacksonville and the Applegate Valley, Highway 99, and Highway 62. As vehicles become more fuel-efficient and electric vehicle adoption increases, revenue from the traditional gas tax is declining.",
+      "This funding gap impacts road repairs, bridge maintenance, and emergency evacuation route planning in the Rogue Valley. Additionally, local public transit systems, such as the Rogue Valley Transportation District (RVTD), must balance services between connecting outlying towns like Phoenix, Talent, and Gold Hill and servicing high-density routes in Medford.",
       "To address these shortfalls, state and local authorities have debated various solutions, including increasing the gas tax, implementing new vehicle registration fees, or exploring highway tolls. Many residents strongly oppose new fees, arguing that household budgets are already stretched too thin, while others argue that without new revenue, road safety and economic connectivity will deteriorate."
     ],
     spokes: [
@@ -274,7 +274,7 @@ export const issuesData: IssueData[] = [
         title: "Road Funding & The Gas Tax",
         background: ["Oregon's roads are primarily funded by the gas tax. As cars become more efficient and electric vehicles (EVs) avoid the gas pump entirely, road funding is plummeting while maintenance costs skyrocket. The state is exploring alternatives, such as a per-mile road usage charge (OReGO) or increasing general registration fees, to make up the difference."],
         viewA: "Some residents support shifting to a per-mile usage fee or tolling system, arguing that those who drive the most (including heavy EV users) should pay their fair share for the wear and tear on the roads.",
-        viewB: "Others fiercely oppose tracking mileage or adding tolls, arguing that these systems disproportionately hurt rural commuters in District 3 who have no choice but to drive long distances to work.",
+        viewB: "Others fiercely oppose tracking mileage or adding tolls, arguing that these systems disproportionately hurt rural commuters in the Applegate Valley or smaller towns like Ruch, Gold Hill, and Rogue River who have no choice but to drive long distances to work in Medford.",
         tradeoffs: "Fairness of pay-per-mile vs. privacy concerns of tracking mileage; steady revenue for road repair vs. increased financial burden on long-distance rural commuters.",
         feedbackPrompt: "As gas tax revenues decline, how should we fund road repairs: by implementing a per-mile driving charge, increasing flat registration fees, or tolling major highways?",
         searchKeywords: ["gas tax", "orego", "toll", "mileage", "registration fee", "road maintenance"]
@@ -301,7 +301,7 @@ export const issuesData: IssueData[] = [
     searchKeywords: ["wildfire", "water", "drought", "forest", "environment", "climate"],
     background: [
       "The natural landscape of District 3 is both our greatest asset and our most complex management challenge. The devastating memory of the 2020 Almeda Drive Fire—which swept through Ashland, Talent, Phoenix, and Medford, destroying thousands of homes and businesses—underscores the urgent need for emergency resilience and effective wildfire management in the Rogue Valley.",
-      "Furthermore, the Rogue Valley regularly experiences 'smoke seasons' in the summer, where smoke from regional wildfires settles in the basin, impacting air quality, local agriculture (such as vineyards), and the tourism economy, including the outdoor stage at the Oregon Shakespeare Festival in Ashland.",
+      "Furthermore, the Rogue Valley regularly experiences 'smoke seasons' in the summer, where smoke from regional wildfires settles in the basin, impacting air quality, local agriculture (especially vineyards in the Applegate Valley), and the tourism economy, including the outdoor stage at the Oregon Shakespeare Festival in Ashland.",
       "Water rights and drought management present an equally difficult challenge in our region. With dry summers and low snowpacks, the Talent Irrigation District (TID) and other local water managers must constantly balance the competing needs of agricultural farmers, municipal drinking water supplies, and environmental regulations to protect native fish populations."
     ],
     spokes: [
@@ -322,7 +322,7 @@ export const issuesData: IssueData[] = [
         id: "water-rights-drought",
         title: "Water Rights & Drought",
         background: ["The Rogue River Basin and Southern Oregon frequently battle severe drought conditions. Water managers must allocate limited resources among agricultural farmers who need it for crops, municipalities that need it for drinking water, and environmental regulations that require water to be kept in rivers to protect endangered fish species."],
-        viewA: "Some prioritize the agricultural industry and rural livelihoods, arguing that without secure water rights for farming in the Rogue Valley, our local food supply and rural economies will collapse.",
+        viewA: "Some prioritize the agricultural industry and rural livelihoods, arguing that without secure water rights for farming in the Rogue Valley and Applegate Valley, our local food supply and rural economies will collapse.",
         viewB: "Others prioritize environmental and tribal obligations, arguing that we must maintain minimum river flows to prevent the extinction of native fish species and protect the long-term health of the ecosystem.",
         tradeoffs: "Economic survival of local farms vs. ecological survival of native fish; commercial water use vs. environmental conservation mandates.",
         feedbackPrompt: "During times of severe drought, how should we prioritize limited water resources in our valley: protecting agricultural farming operations or maintaining river flows for endangered fish and wildlife?",
