@@ -1,5 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "About Tysan McClusky | Oregon Senate District 3 Candidate",
+  description: "Meet Tysan McClusky, candidate for Oregon State Senate District 3, and learn about his constituent-led approach to representation.",
+  path: "/about",
+});
 
 export default function AboutMe() {
   return (
@@ -20,7 +27,7 @@ export default function AboutMe() {
             </div>
           </div>
           <div className="about-text">
-            <h2 className="section-title left-align">Meet Tysan</h2>
+            <h1 className="section-title left-align">Meet Tysan</h1>
             <p className="section-subtitle left-align" style={{ marginBottom: '2rem' }}>
               A native Oregonian, AI expert, and advocate for absolute democratic representation.
             </p>

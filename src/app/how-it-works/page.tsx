@@ -1,10 +1,18 @@
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "How Constituent-Led Representation Works | Oregon District 3",
+  description: "Learn how Tysan McClusky proposes to gather Oregon Senate District 3 feedback on major legislation and use constituent input to guide representation.",
+  path: "/how-it-works",
+});
+
 export default function Issues() {
   return (
     <div style={{ paddingTop: '80px' }}>
       <section className="issues section-padding">
         <div className="container">
           <div className="text-center">
-            <h2 className="section-title">How Direct Representation Works</h2>
+            <h1 className="section-title">How Direct Representation Works</h1>
             <p className="section-subtitle">
               A modern, citizen-first approach to state governance that returns power to the voter.
             </p>

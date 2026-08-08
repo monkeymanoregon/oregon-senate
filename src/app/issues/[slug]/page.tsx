@@ -1,15 +1,40 @@
 import { notFound } from "next/navigation";
 import { issuesData } from "@/data/issues";
-import InteractiveFeedback from "@/components/InteractiveFeedback";
+import SolutionFeedback from "@/components/SolutionFeedback";
 import Link from "next/link";
 import LiveBills from "@/components/LiveBills";
-import PublicSentimentChart from "@/components/PublicSentimentChart";
+import OfficialSources from "@/components/OfficialSources";
+import { getOfficialSources } from "@/data/officialSources";
+import {
+  CANDIDATE_NAME,
+  ISSUE_PUBLISHED_DATE,
+  issueDescription,
+  issueSeoTitle,
+  jsonLd,
+  pageMetadata,
+  SEO_REVIEW_DATE,
+  SITE_URL,
+} from "@/lib/seo";
+import type { Metadata } from "next";
 
 // Pre-generate static routes for all known issues during build
 export function generateStaticParams() {
   return issuesData.map((issue) => ({
     slug: issue.id,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const issue = issuesData.find((item) => item.id === slug);
+  if (!issue) return {};
+
+  return pageMetadata({
+    title: issueSeoTitle(issue.id, issue.title),
+    description: issueDescription(issue.title),
+    path: `/issues/${issue.id}`,
+    type: "article",
+  });
 }
 
 export default async function IssuePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -20,8 +45,38 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
     notFound();
   }
 
+  const canonicalUrl = `${SITE_URL}/issues/${issue.id}`;
+  const description = issueDescription(issue.title);
+  const officialSources = getOfficialSources(issue.id);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: issueSeoTitle(issue.id, issue.title),
+        description,
+        datePublished: ISSUE_PUBLISHED_DATE,
+        dateModified: SEO_REVIEW_DATE,
+        mainEntityOfPage: canonicalUrl,
+        author: { "@type": "Person", name: CANDIDATE_NAME, url: `${SITE_URL}/about` },
+        publisher: { "@type": "Organization", name: "Tysan for Oregon State Senate District 3", url: SITE_URL },
+        about: { "@type": "Thing", name: issue.title },
+        citation: officialSources.map((source) => source.url),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Issues", item: `${SITE_URL}/issues` },
+          { "@type": "ListItem", position: 3, name: issue.title, item: canonicalUrl },
+        ],
+      },
+    ],
+  };
+
   return (
     <div style={{ paddingTop: '80px' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <section className="section-padding">
         <div className="container">
           <Link href="/issues" style={{ display: 'inline-block', marginBottom: '2rem', color: 'var(--primary)', textDecoration: 'none', fontWeight: '500' }}>
@@ -30,29 +85,17 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
 
           <div style={{ marginBottom: '4rem' }}>
             <h1 className="section-title left-align" style={{ marginBottom: '1rem' }}>{issue.title}</h1>
-            <p className="section-subtitle" style={{ margin: 0, textAlign: 'left', maxWidth: '800px', marginBottom: '2rem' }}>
-              Residents disagree on the best solution for this issue. I want to know what you actually want represented.
+            <p className="section-subtitle" style={{ margin: 0, textAlign: 'left', maxWidth: '800px', marginBottom: '2rem', color: 'var(--text-muted)' }}>
+              Factual background and legislative updates on key issues facing Jackson County.
             </p>
             {issue.background && issue.background.map((paragraph, idx) => (
               <p key={idx} style={{ fontSize: '1.1rem', color: 'var(--text-dark)', marginBottom: '1.5rem', lineHeight: '1.8' }}>
                 {paragraph}
               </p>
             ))}
-          </div>
-
-          <div style={{ backgroundColor: 'var(--bg-white)', padding: '2.5rem', borderRadius: '8px', boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-color)', marginBottom: '3rem' }}>
-            <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)', fontSize: '1.4rem' }}>Community Perspectives</h3>
-            <p style={{ fontSize: '1.1rem', color: 'var(--text-dark)', marginBottom: '1rem', lineHeight: '1.7' }}>
-              When I speak with residents across District 3, I hear a wide range of thoughtful ideas and valid concerns. {issue.viewA}
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '1rem' }}>
+              Last reviewed August 8, 2026.
             </p>
-            <p style={{ fontSize: '1.1rem', color: 'var(--text-dark)', lineHeight: '1.7' }}>
-              {issue.viewB}
-            </p>
-          </div>
-
-          <div style={{ backgroundColor: 'var(--bg-light)', padding: '2rem', borderRadius: '8px', marginBottom: '4rem' }}>
-            <h3 style={{ marginBottom: '1rem' }}>Key Tradeoffs</h3>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>{issue.tradeoffs}</p>
           </div>
 
           {issue.spokes && issue.spokes.length > 0 && (
@@ -86,23 +129,16 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
               </div>
             </div>
           )}
-
-          <PublicSentimentChart issueId={issue.id} />
           
           <LiveBills keywords={issue.searchKeywords} />
+          <OfficialSources sources={officialSources} />
 
         </div>
       </section>
 
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)' }}>
-        <div className="container text-center">
-          <h2 className="section-title">Weigh In</h2>
-          <p className="section-subtitle" style={{ maxWidth: '800px', margin: '0 auto', color: 'var(--primary)', fontWeight: '600' }}>
-            {issue.feedbackPrompt}
-          </p>
-          <div style={{ marginTop: '2rem' }}>
-            <InteractiveFeedback initialCategory={issue.categoryMap} />
-          </div>
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-light)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <SolutionFeedback issueId={issue.id} />
         </div>
       </section>
     </div>

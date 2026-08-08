@@ -30,8 +30,13 @@ export default function Navbar() {
   return (
     <header className={`navbar-header${scrolled ? " navbar-scrolled" : ""}`}>
       <div className="container navbar-container">
-        <Link href="/" className="navbar-logo">
-          TYSAN<span>.</span>
+        <Link href="/" className="navbar-logo" style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.1', textDecoration: 'none' }}>
+          <span style={{ fontSize: '1.3rem' }}>
+            Tysan McClusky
+          </span>
+          <span style={{ fontSize: '0.72rem', fontWeight: '500', color: 'var(--text-muted)', letterSpacing: '0px', textTransform: 'none', marginTop: '2px', fontFamily: 'sans-serif' }}>
+            for true representative democracy
+          </span>
         </Link>
 
         <nav>

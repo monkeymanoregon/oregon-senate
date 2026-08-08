@@ -9,9 +9,9 @@ export default async function LiveBills({ keywords }: { keywords?: string[] }) {
   if (!bills || bills.length === 0) {
     return (
       <div style={{ backgroundColor: 'var(--bg-light)', padding: '2rem', borderRadius: '8px', marginBottom: '4rem', textAlign: 'center' }}>
-        <h3 style={{ marginBottom: '1rem', color: 'var(--primary)', fontSize: '1.5rem' }}>Live Legislation</h3>
+        <h3 style={{ marginBottom: '1rem', color: 'var(--primary)', fontSize: '1.5rem' }}>Related Oregon Legislation</h3>
         <p style={{ color: 'var(--text-muted)' }}>
-          There are currently no active bills on the Senate floor directly related to these keywords.
+          No bills in the current Oregon legislative feed closely match this topic right now.
         </p>
       </div>
     );
@@ -20,9 +20,9 @@ export default async function LiveBills({ keywords }: { keywords?: string[] }) {
   return (
     <div style={{ marginBottom: '4rem' }}>
       <div style={{ marginBottom: '2rem', borderBottom: '2px solid var(--border-color)', paddingBottom: '0.5rem' }}>
-        <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '0.5rem' }}>Live Legislation</h3>
+        <h3 style={{ color: 'var(--primary)', fontSize: '1.5rem', marginBottom: '0.5rem' }}>Related Oregon Legislation</h3>
         <p style={{ color: 'var(--text-muted)' }}>
-          These are real bills currently moving through the Oregon Senate related to this issue. Read the details and cast your vote below.
+          These Oregon bills match this topic by complete words or phrases in their title or description. Each card shows the latest action reported by the legislative data feed.
         </p>
       </div>
       

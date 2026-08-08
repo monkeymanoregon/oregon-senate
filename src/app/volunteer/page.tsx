@@ -36,7 +36,7 @@ export default function Volunteer() {
       <section className="volunteer section-padding">
         <div className="container">
           <div className="text-center">
-            <h2 className="section-title">Join the Movement</h2>
+            <h1 className="section-title">Join the Movement</h1>
             <p className="section-subtitle">
               Help us prove that a true representation model works. Sign up today to volunteer.
             </p>

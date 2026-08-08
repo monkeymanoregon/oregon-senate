@@ -72,6 +72,32 @@ export const issuesData: IssueData[] = [
         tradeoffs: "Immediate short-term relief vs. permanent long-term stability; high operational costs for managed shelters vs. high upfront construction costs for apartments.",
         feedbackPrompt: "When allocating funds to address homelessness in District 3, should we prioritize building emergency shelters for immediate relief, or long-term permanent affordable housing?",
         searchKeywords: ["shelter", "turnkey", "affordable housing", "transitional", "village"]
+      },
+      {
+        id: "affordable-housing-projects",
+        title: "Affordable Housing Projects in Ashland & Medford",
+        background: [
+          "The cities of Ashland and Medford are actively planning and executing housing initiatives to address the severe shortage of affordable units in the Rogue Valley. In Ashland, projects like the planned development near Ashland High School and various initiatives in the Kestrel Park area target low- and middle-income families. Meanwhile, Medford is seeing the expansion of transitional and supportive housing projects, funded in part by state grants and partnerships with local community action agencies.",
+          "Despite these initiatives, developers and municipal planners face ongoing hurdles, including high land costs, building material inflation, and concerns over neighborhood density. The gap between market-rate housing costs and average wages of local workers—particularly in the service, tourism, and agricultural industries—continues to widen, putting pressure on city leaders to find ways to accelerate development."
+        ],
+        viewA: "",
+        viewB: "",
+        tradeoffs: "",
+        feedbackPrompt: "How do you think we should support and accelerate affordable housing construction in Ashland and Medford?",
+        searchKeywords: ["affordable housing", "ashland", "medford", "access", "development", "density"]
+      },
+      {
+        id: "housing-assistance-programs",
+        title: "Renter & Homebuyer Assistance Programs",
+        background: [
+          "With rising rent prices and mortgage rates, many Jackson County residents struggle to keep or secure stable housing. Local organizations such as ACCESS, Coalición Fortaleza, and the Rogue Action Center manage emergency rental assistance, eviction prevention programs, and utility relief to help vulnerable households remain in their homes.",
+          "For prospective homebuyers, the state offers down-payment assistance programs through Oregon Housing and Community Services (OHCS). However, local service organizations report that demand for these programs far exceeds funding, leaving many working families who earn slightly too much for assistance programs, but too little to afford market rents or home ownership, without support."
+        ],
+        viewA: "",
+        viewB: "",
+        tradeoffs: "",
+        feedbackPrompt: "How can state and local programs better support renters and first-time homebuyers facing high housing costs in Jackson County?",
+        searchKeywords: ["renter assistance", "eviction prevention", "homebuyer assistance", "access", "ohcs", "rent relief"]
       }
     ]
   },
@@ -241,7 +267,7 @@ export const issuesData: IssueData[] = [
         viewB: "Others caution that while vocational training is important, we must not track students away from advanced academic subjects or reduce funding for college-preparatory courses.",
         tradeoffs: "Funding vocational shops and equipment vs. funding traditional academic classrooms; pushing immediate workforce entry vs. encouraging university degrees.",
         feedbackPrompt: "Should we significantly shift education funding to prioritize Career and Technical Education (trades/vocational training) in District 3 high schools, or maintain a focus on preparing all students for a 4-year college?",
-        searchKeywords: ["cte", "vocational", "trades", "apprenticeship", "career", "workforce"]
+        searchKeywords: ["career and technical education", "career technical education", "vocational education", "apprenticeship", "skilled trades", "workforce training"]
       }
     ]
   },
@@ -272,12 +298,16 @@ export const issuesData: IssueData[] = [
       {
         id: "road-funding-gas-tax",
         title: "Road Funding & The Gas Tax",
-        background: ["Oregon's roads are primarily funded by the gas tax. As cars become more efficient and electric vehicles (EVs) avoid the gas pump entirely, road funding is plummeting while maintenance costs skyrocket. The state is exploring alternatives, such as a per-mile road usage charge (OReGO) or increasing general registration fees, to make up the difference."],
+        background: [
+          "As of August 2026, Oregon's state motor vehicle fuel tax on gasoline is 40 cents per gallon. House Bill 3991, signed in November 2025, proposed additional transportation taxes and fees, but most of those increases were rejected by voters in Measure 120. The 40-cent state gas tax therefore remains in place, in addition to any applicable local and federal fuel taxes.",
+          "Not every part of HB 3991 was overturned. ODOT says accountability provisions and a $30 increase in supplemental registration fees for vehicles rated at 40+ MPG remain in effect. A mandatory road-usage charge is scheduled to begin July 1, 2027 for existing electric vehicles, with new electric vehicles and hybrids or plug-in hybrids following the next year.",
+          "The larger funding problem is still unresolved. Oregon's 2026 Legislature stabilized ODOT's maintenance and operations through the end of the current 2025-27 budget cycle after a $297 million shortfall, but ODOT says the underlying State Highway Fund challenge remains. A state workgroup is developing recommendations for the 2027 legislative session. For District 3, the core question is how Oregon maintains roads and emergency routes without placing an unfair burden on rural residents who often have to drive farther."
+        ],
         viewA: "Some residents support shifting to a per-mile usage fee or tolling system, arguing that those who drive the most (including heavy EV users) should pay their fair share for the wear and tear on the roads.",
         viewB: "Others fiercely oppose tracking mileage or adding tolls, arguing that these systems disproportionately hurt rural commuters in the Applegate Valley or smaller towns like Ruch, Gold Hill, and Rogue River who have no choice but to drive long distances to work in Medford.",
         tradeoffs: "Fairness of pay-per-mile vs. privacy concerns of tracking mileage; steady revenue for road repair vs. increased financial burden on long-distance rural commuters.",
         feedbackPrompt: "As gas tax revenues decline, how should we fund road repairs: by implementing a per-mile driving charge, increasing flat registration fees, or tolling major highways?",
-        searchKeywords: ["gas tax", "orego", "toll", "mileage", "registration fee", "road maintenance"]
+        searchKeywords: ["gas tax", "fuel tax", "orego", "road usage charge", "registration fee", "road funding"]
       }
     ]
   },
@@ -327,6 +357,32 @@ export const issuesData: IssueData[] = [
         tradeoffs: "Economic survival of local farms vs. ecological survival of native fish; commercial water use vs. environmental conservation mandates.",
         feedbackPrompt: "During times of severe drought, how should we prioritize limited water resources in our valley: protecting agricultural farming operations or maintaining river flows for endangered fish and wildlife?",
         searchKeywords: ["water", "drought", "klamath", "agriculture", "farm", "fish"]
+      },
+      {
+        id: "wildfire-insurance",
+        title: "Wildfire Insurance & Mitigation",
+        background: [
+          "Homeowners across Jackson County are facing a critical challenge: the rising cost and declining availability of wildfire insurance. In recent years, major insurance providers have restricted writing new policies or declined renewals in Southern Oregon, citing elevated wildfire risks. This has forced many residents, particularly in rural and forested areas like the Applegate Valley and outer Ashland, to rely on the Oregon FAIR Plan—the state's safety-net insurer—which often carries higher premiums and more limited coverage.",
+          "In response, the state legislature passed Senate Bill 762, which mandated the creation of a wildfire risk map to guide safety standards. However, the implementation faced pushback from property owners concerned about skyrocketing insurance premiums and compliance costs. Residents are dealing with the dual pressure of protecting their homes from fires and protecting their household budgets from rising insurance rates."
+        ],
+        viewA: "",
+        viewB: "",
+        tradeoffs: "",
+        feedbackPrompt: "How do you think state lawmakers should address the wildfire insurance availability and cost crisis in Jackson County?",
+        searchKeywords: ["wildfire insurance", "fair plan", "insurance rates", "sb 762", "home hardening"]
+      },
+      {
+        id: "post-fire-rebuilding",
+        title: "Talent & Phoenix Post-Fire Rebuilding",
+        background: [
+          "The Almeda Drive Fire of September 2020 destroyed over 2,500 residential units in Jackson County, primarily affecting the cities of Talent and Phoenix. A significant portion of these units were manufactured homes, which provided the bulk of the area's affordable housing. Rebuilding efforts have been underway for years, but rising construction costs, supply chain delays, and zoning complexities have slowed the return of displaced residents.",
+          "Local community organizations, non-profits like Coalición Fortaleza, and municipal governments have coordinated with state and federal agencies to fund affordable housing developments and infrastructure repairs. However, many working-class families and senior citizens continue to live in temporary arrangements or have been forced to leave the Rogue Valley due to high rents and lack of options. Re-establishing the affordable housing stock remains a central challenge for Jackson County's long-term economic recovery."
+        ],
+        viewA: "",
+        viewB: "",
+        tradeoffs: "",
+        feedbackPrompt: "What should state and local leaders focus on to accelerate the rebuilding of affordable housing in Talent and Phoenix?",
+        searchKeywords: ["almeda fire", "rebuilding", "talent", "phoenix", "manufactured home", "affordable housing"]
       }
     ]
   }

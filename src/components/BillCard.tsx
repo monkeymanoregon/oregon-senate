@@ -8,12 +8,13 @@ export interface OregonMeasureFull {
   MeasureNumber: number;
   CatchLine: string;
   MeasureSummary: string;
-  CurrentLocation: string;
+  LatestAction: string;
   RelatingTo: string;
   FiscalImpact: string | null;
   RevenueImpact: string | null;
-  EffectiveDate: string | null;
+  StatusDate: string | null;
   ModifiedDate: string | null;
+  SourceUrl?: string | null;
   FiscalDocumentUrl?: string | null;
   RevenueDocumentUrl?: string | null;
 }
@@ -28,7 +29,7 @@ export default function BillCard({ bill }: { bill: OregonMeasureFull }) {
       <div className="bill-card">
         <div className="bill-header">
           <h3>{bill.MeasurePrefix} {bill.MeasureNumber}</h3>
-          <span className="bill-status">{bill.CurrentLocation}</span>
+          <span className="bill-status">Latest action</span>
         </div>
         <div className="bill-content">
           <p className="bill-summary">{bill.CatchLine}</p>
@@ -56,19 +57,24 @@ export default function BillCard({ bill }: { bill: OregonMeasureFull }) {
             </div>
             <div className="modal-body">
               <div className="modal-meta">
-                <span className="meta-tag status-tag"><strong>Status:</strong> {bill.CurrentLocation}</span>
-                {bill.EffectiveDate && (
-                  <span className="meta-tag"><strong>Effective:</strong> {new Date(bill.EffectiveDate).toLocaleDateString()}</span>
+                <span className="meta-tag status-tag"><strong>Latest action:</strong> {bill.LatestAction}</span>
+                {bill.StatusDate && (
+                  <span className="meta-tag"><strong>Status date:</strong> {new Date(bill.StatusDate).toLocaleDateString()}</span>
                 )}
               </div>
               
               <div className="modal-section">
                 <h4>Full Summary</h4>
-                <div 
-                  className="modal-summary-text" 
-                  dangerouslySetInnerHTML={{ __html: bill.MeasureSummary }} 
-                />
+                <p className="modal-summary-text">{bill.MeasureSummary}</p>
               </div>
+
+              {bill.SourceUrl && (
+                <div className="modal-section">
+                  <a href={bill.SourceUrl} target="_blank" rel="noreferrer" className="btn-read-more">
+                    View source record &raquo;
+                  </a>
+                </div>
+              )}
 
               {(bill.FiscalImpact || bill.RevenueImpact) && (
                 <div className="modal-section impact-grid">

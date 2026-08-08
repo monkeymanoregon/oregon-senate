@@ -24,7 +24,7 @@ export default function Home() {
             </p>
             <div className="hero-ctas" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', maxWidth: '400px' }}>
               <Link href="/bills" className="btn btn-primary" style={{ width: '100%', fontSize: '1.1rem', padding: '1rem' }}>
-                Vote on Live Senate Bills
+                Explore Recent Oregon Bills
               </Link>
               <div style={{ display: 'flex', gap: '1rem', width: '100%' }}>
                 <Link href="/about" className="btn btn-outline" style={{ flex: 1, padding: '0.75rem', textAlign: 'center' }}>Read the Promise</Link>
@@ -112,6 +112,45 @@ export default function Home() {
           <Link href="/about" className="btn btn-outline" style={{ display: 'inline-flex', margin: '0 auto' }}>
             Read the Full Platform
           </Link>
+        </div>
+      </section>
+
+      {/* District 3 Map Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-white)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+            
+            {/* Map image */}
+            <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border-color)' }}>
+              <Image 
+                src="/district3_map.png"
+                alt="Oregon Senate District 3 Map Outline"
+                width={500}
+                height={500}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </div>
+
+            {/* Map Content */}
+            <div style={{ textAlign: 'left' }}>
+              <h2 className="section-title left-align" style={{ marginBottom: '1.5rem' }}>
+                Oregon Senate <span>District 3</span> Boundaries
+              </h2>
+              <p style={{ fontSize: '1.1rem', color: 'var(--text-dark)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                Senate District 3 covers the southern portion of **Jackson County** in Southern Oregon, stretching from urban centers to agricultural valleys.
+              </p>
+              
+              <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.1rem', fontWeight: '700' }}>Incorporated Cities & Communities:</h4>
+              <ul style={{ paddingLeft: '1.25rem', marginBottom: '1.5rem', color: 'var(--text-dark)', lineHeight: '1.6' }}>
+                <li><strong>Medford:</strong> South and west portions of the city</li>
+                <li><strong>Ashland:</strong> Entire city limits, including SOU</li>
+                <li><strong>Talent & Phoenix:</strong> Communities along Highway 99</li>
+                <li><strong>Jacksonville:</strong> Historic preservation district</li>
+                <li><strong>Applegate Valley & Ruch:</strong> Rural agricultural and wine valleys</li>
+              </ul>
+            </div>
+
+          </div>
         </div>
       </section>
 

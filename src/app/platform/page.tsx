@@ -1,5 +1,12 @@
 import Image from "next/image";
 import BudgetAllocator from "@/components/BudgetAllocator";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Platform Promise | Tysan for Oregon Senate District 3",
+  description: "Read Tysan McClusky's constituent-led platform promise for Oregon State Senate District 3 and how resident feedback would guide representation.",
+  path: "/platform",
+});
 
 export default function About() {
   return (
@@ -19,7 +26,7 @@ export default function About() {
             </div>
           </div>
           <div className="about-text">
-            <h2 className="section-title left-align">The Promise of Representation</h2>
+            <h1 className="section-title left-align">The Promise of Representation</h1>
             <p style={{ marginTop: '1.5rem' }}>
               For too long, politicians have entered office to push their own agendas, follow party lines, or spend their time dialing for dollars. They vote based on backroom deals rather than the actual will of their constituents.
             </p>

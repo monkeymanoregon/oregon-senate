@@ -12,9 +12,9 @@ export default function Footer() {
         
         <div className="footer-grid">
           <div className="footer-about">
-            <h3>Tysan for Senate</h3>
+            <h3>Tysan McClusky for Senate</h3>
             <p>
-              Pragmatic, direct democracy leadership focused entirely on voting in accordance with the will of the citizens of Oregon's District 3.
+              Pragmatic, direct democracy leadership focused entirely on voting in accordance with the will of the citizens of Oregon&apos;s District 3.
             </p>
           </div>
           <div className="footer-links">
@@ -25,6 +25,8 @@ export default function Footer() {
               <li><Link href="/platform">Platform Promise</Link></li>
               <li><Link href="/bills">Vote on Bills</Link></li>
               <li><Link href="/issues">Issues Library</Link></li>
+              <li><Link href="/oregon-senate-district-3">District 3 Guide</Link></li>
+              <li><Link href="/district-3-updates">District 3 Updates</Link></li>
               <li><Link href="/how-it-works">How It Works</Link></li>
             </ul>
           </div>

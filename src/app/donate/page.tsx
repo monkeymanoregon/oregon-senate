@@ -20,7 +20,7 @@ export default function Donate() {
       <section className="donation section-padding">
         <div className="container">
           <div className="text-center">
-            <h2 className="section-title">Support The Community</h2>
+            <h1 className="section-title">Support The Community</h1>
             <p className="section-subtitle">
               All campaign contributions will go directly back into the community. I will take zero money from this campaign, and every dollar donated will fund community projects, town halls, and local advocacy.
             </p>

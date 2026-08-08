@@ -5,7 +5,12 @@ import {
   getDoc, 
   setDoc, 
   increment,
-  Firestore
+  Firestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy
 } from "firebase/firestore";
 
 // Read Firebase configurations from Next.js public environment variables
@@ -335,3 +340,174 @@ export async function getPriorityAverages(): Promise<PriorityAverages> {
 
   return DEFAULT_PRIORITY_AVG;
 }
+
+// ==========================================
+// 4. SOLUTION FEEDBACK LOGIC
+// ==========================================
+
+export interface SolutionFeedbackData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  issueId: string;
+  spokeId?: string;
+  solution: string;
+  createdAt?: string;
+}
+
+export async function submitSolutionFeedback(
+  data: SolutionFeedbackData
+): Promise<void> {
+  if (db) {
+    try {
+      const colRef = collection(db, "constituent_solutions");
+      await addDoc(colRef, {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        issueId: data.issueId,
+        spokeId: data.spokeId || null,
+        solution: data.solution,
+        createdAt: new Date().toISOString()
+      });
+      console.log("Solution feedback written to Firestore successfully.");
+    } catch (err) {
+      console.error("Error writing solution feedback to Firestore:", err);
+    }
+  } else {
+    // Local storage simulation
+    const key = "mock_constituent_solutions";
+    let list: any[] = [];
+    if (typeof window !== "undefined") {
+      const raw = localStorage.getItem(key);
+      list = raw ? JSON.parse(raw) : [];
+      list.push({
+        ...data,
+        createdAt: new Date().toISOString()
+      });
+      localStorage.setItem(key, JSON.stringify(list));
+      console.log("Solution feedback saved in simulated LocalStorage:", list);
+    }
+  }
+}
+
+// ==========================================
+// 5. ADMIN DASHBOARD DATA FETCHING
+// ==========================================
+
+export async function getAllSolutions(): Promise<SolutionFeedbackData[]> {
+  if (db) {
+    try {
+      const colRef = collection(db, "constituent_solutions");
+      const q = query(colRef, orderBy("createdAt", "desc"));
+      const snap = await getDocs(q);
+      const list: SolutionFeedbackData[] = [];
+      snap.forEach((doc) => {
+        const d = doc.data();
+        list.push({
+          firstName: d.firstName || "",
+          lastName: d.lastName || "",
+          email: d.email || "",
+          issueId: d.issueId || "",
+          spokeId: d.spokeId || undefined,
+          solution: d.solution || "",
+          createdAt: d.createdAt || ""
+        });
+      });
+      return list;
+    } catch (err) {
+      console.error("Error getting all solutions from Firestore:", err);
+      return [];
+    }
+  }
+
+  // Local storage simulation
+  if (typeof window !== "undefined") {
+    const raw = localStorage.getItem("mock_constituent_solutions");
+    if (raw) {
+      return JSON.parse(raw);
+    }
+  }
+
+  // Return some sample data so the dashboard is beautiful even in mock mode
+  return [
+    {
+      firstName: "Sarah",
+      lastName: "Jenkins",
+      email: "sarah.j@example.com",
+      issueId: "housing-homelessness-affordability",
+      solution: "We need more modular housing projects in Medford. The current zoning laws prevent quick housing construction. State grants should incentivize cities to speed up zoning approvals.",
+      createdAt: new Date(Date.now() - 3600000 * 2).toISOString()
+    },
+    {
+      firstName: "David",
+      lastName: "Miller",
+      email: "dmiller@roguevalley.net",
+      issueId: "wildfire-mitigation-drought",
+      solution: "In Ashland, we need more clear-cut fire breaks near the city boundaries. The smoke mitigation programs should also provide free air filters to low-income senior citizens.",
+      createdAt: new Date(Date.now() - 3600000 * 5).toISOString()
+    },
+    {
+      firstName: "Maria",
+      lastName: "Rodriguez",
+      email: "maria.r@talentoregon.org",
+      issueId: "cost-of-living-taxes",
+      solution: "Reduce property taxes for families rebuilding after the Almeda fire. Phoenix and Talent still have vacant lots because of the high cost of construction and fees.",
+      createdAt: new Date(Date.now() - 3600000 * 24).toISOString()
+    }
+  ];
+}
+
+// Fetch all bill vote counts
+export interface BillVoteRecord {
+  billId: string;
+  yes: number;
+  no: number;
+  undecided: number;
+}
+
+export async function getAllVotes(): Promise<BillVoteRecord[]> {
+  if (db) {
+    try {
+      const colRef = collection(db, "votes");
+      const snap = await getDocs(colRef);
+      const list: BillVoteRecord[] = [];
+      snap.forEach((doc) => {
+        const data = doc.data();
+        list.push({
+          billId: doc.id,
+          yes: data.yes || 0,
+          no: data.no || 0,
+          undecided: data.undecided || 0
+        });
+      });
+      return list;
+    } catch (err) {
+      console.error("Error getting all votes from Firestore:", err);
+      return [];
+    }
+  }
+
+  // Fallback to local storage/mock data
+  const bills = ["sb-1502", "sb-1530", "hb-4002", "hb-4115", "sb-5701"];
+  const list: BillVoteRecord[] = [];
+  for (const billId of bills) {
+    const votesKey = `mock_votes_${billId}`;
+    if (typeof window !== "undefined") {
+      const raw = localStorage.getItem(votesKey);
+      if (raw) {
+        const v = JSON.parse(raw);
+        list.push({ billId, ...v });
+        continue;
+      }
+    }
+    list.push({
+      billId,
+      yes: 45 + Math.floor(Math.random() * 30),
+      no: 15 + Math.floor(Math.random() * 20),
+      undecided: 10 + Math.floor(Math.random() * 10)
+    });
+  }
+  return list;
+}
+
