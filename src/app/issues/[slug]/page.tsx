@@ -4,6 +4,7 @@ import SolutionFeedback from "@/components/SolutionFeedback";
 import Link from "next/link";
 import LiveBills from "@/components/LiveBills";
 import OfficialSources from "@/components/OfficialSources";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { getOfficialSources } from "@/data/officialSources";
 import {
   CANDIDATE_NAME,
@@ -79,9 +80,12 @@ export default async function IssuePage({ params }: { params: Promise<{ slug: st
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <section className="section-padding">
         <div className="container">
-          <Link href="/issues" style={{ display: 'inline-block', marginBottom: '2rem', color: 'var(--primary)', textDecoration: 'none', fontWeight: '500' }}>
-            &larr; Back to Issues Library
-          </Link>
+          <Breadcrumbs
+            items={[
+              { label: "Issues", href: "/issues" },
+              { label: issue.title },
+            ]}
+          />
 
           <div style={{ marginBottom: '4rem' }}>
             <h1 className="section-title left-align" style={{ marginBottom: '1rem' }}>{issue.title}</h1>

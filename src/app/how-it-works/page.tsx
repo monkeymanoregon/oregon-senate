@@ -1,4 +1,5 @@
-import { pageMetadata } from "@/lib/seo";
+import { faqJsonLd, jsonLd, pageMetadata } from "@/lib/seo";
+import FaqSection from "@/components/FaqSection";
 
 export const metadata = pageMetadata({
   title: "How Constituent-Led Representation Works | Oregon District 3",
@@ -6,9 +7,32 @@ export const metadata = pageMetadata({
   path: "/how-it-works",
 });
 
+const faqs = [
+  {
+    question: "How does Tysan vote on Oregon State Senate bills?",
+    answer: "Tysan votes strictly based on constituent feedback in Oregon Senate District 3. Before key votes, legislative bill summaries and options are posted for residents to review and indicate how they want District 3 represented.",
+  },
+  {
+    question: "How can District 3 residents submit their vote or feedback?",
+    answer: "Residents can vote on active bills in the Bills section or submit solution proposals on specific issue pages for topics like housing, wildfire, water rights, and transportation.",
+  },
+  {
+    question: "What if there is a close split among constituents?",
+    answer: "If district sentiment is split evenly, Tysan hosts dedicated open town halls and publishes detailed feedback breakdowns so the district community can deliberate openly.",
+  },
+  {
+    question: "Does Tysan accept money from corporate PACs or special interest lobbyists?",
+    answer: "No. The campaign takes zero special interest lobbyist cash, ensuring votes remain 100% constituent-guided without outside financial influence.",
+  },
+];
+
 export default function Issues() {
   return (
     <div style={{ paddingTop: '80px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(faqJsonLd(faqs)) }}
+      />
       <section className="issues section-padding">
         <div className="container">
           <div className="text-center">
@@ -73,6 +97,8 @@ export default function Issues() {
               </p>
             </div>
           </div>
+
+          <FaqSection faqs={faqs} />
         </div>
       </section>
     </div>

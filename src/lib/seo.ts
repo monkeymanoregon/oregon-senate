@@ -76,6 +76,26 @@ export function pageMetadata({
   };
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export function faqJsonLd(faqs: FaqItem[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 export function jsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
